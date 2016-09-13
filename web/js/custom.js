@@ -64,6 +64,7 @@ jQuery(document).ready(function() {
    
    
    // Menu Toggle
+
    jQuery('.menu-collapse').click(function() {
       if (!$('body').hasClass('hidden-left')) {
          if ($('.headerwrapper').hasClass('collapsed')) {
