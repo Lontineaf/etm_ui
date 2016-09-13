@@ -109,6 +109,10 @@ a:focus {
     margin-top: 5px;
     float: left;
 }
+.headerwrapper .header-left .logo img{
+    height:25px;
+    vertical-align: middle;	
+}
 
 .headerwrapper .header-left .menu-collapse {
     -moz-transition: all 0.2s ease-out 0s;
@@ -141,7 +145,48 @@ a:focus {
     min-height: 60px;
     padding: 14px 15px;
 }
-
+.header-nav{
+	float: left;
+	margin:0;
+	padding-left:5px;
+}
+.header-nav li{
+	list-style: none;
+	float: left;
+	margin-right:10px;
+}
+.header-nav li a{
+	color:#fff;
+	display: inline-block;
+	width:100%;
+	height:32px;
+	line-height: 32px;
+	padding:0 10px;
+	border-radius: 4px;
+}
+.header-nav li a:hover{
+	background:#ccc;
+	color:#428BCA;
+}
+.header-nav .active a {
+	background:#fff;
+	color:#428BCA;
+}
+#phone-nav{
+	display: none;
+}
+#phone-nav .dropdown-menu:after{
+	right:auto;
+	left:20px;
+}
+@media only screen and (max-width: 414px) {
+	.header-nav{
+		display: none;
+	}
+	#phone-nav{
+		display: block;
+	}
+}
 .headerwrapper .header-right .btn-group {
     margin: 0;
     line-height: 21px;
