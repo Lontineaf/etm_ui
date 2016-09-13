@@ -148,7 +148,7 @@ a:focus {
 .header-nav{
 	float: left;
 	margin:0;
-	padding-left:5px;
+	padding-left:20px;
 }
 .header-nav li{
 	list-style: none;
@@ -165,15 +165,16 @@ a:focus {
 	border-radius: 4px;
 }
 .header-nav li a:hover{
-	background:#ccc;
-	color:#428BCA;
+	background:rgba(255,255,255,0.2);
 }
 .header-nav .active a {
-	background:#fff;
-	color:#428BCA;
+	background:rgba(255,255,255,0.4);
 }
 #phone-nav{
 	display: none;
+}
+#phone-nav button{
+	background:transparent;
 }
 #phone-nav .dropdown-menu:after{
 	right:auto;
