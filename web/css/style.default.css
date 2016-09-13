@@ -3036,7 +3036,10 @@ body.signin {
 .panel-signup {
     margin: 80px auto 0 auto;
 }
-
+.signin .logo img{
+	display:inline-block;
+	height:50px;
+}
 .panel-signin {
     width: 400px;
 }
