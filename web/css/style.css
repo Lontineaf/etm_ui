@@ -1,6 +1,39 @@
 @import url(../css/style.default.css);
+.function-score {
+  overflow: hidden;
+  margin-top: 20px; }
+  .function-score .score-circle {
+    float: left;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    border-radius: 50%;
+    background: green;
+    margin-right: 20px; }
+    .function-score .score-circle span {
+      font-size: 14px;
+      margin-left: 5px;
+      display: inline-block;
+      vertical-align: middle; }
+
+.bg-reset {
+  background: #eee; }
+
 body .esm-xnpf-detail h1 {
   font-size: 28px; }
+
+body .esm-coreline .nav {
+  margin: 0;
+  border-bottom: 1px solid #ddd; }
+  body .esm-coreline .nav li a {
+    padding: 5px; }
+
+body .esm-coreline .tab-content {
+  padding: 10px  0 0;
+  border: 0; }
 
 @media screen and (max-width: 800px) {
   body .row-stat .esm-xnpf-detail h1 {

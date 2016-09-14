@@ -1,9 +1,27 @@
 @import "../css/style.default.css";
 @import "function";
+@import "indexmain";
 body {
   .esm-xnpf-detail{
     h1{
       font-size: 28px;
+    }
+  }
+  
+  .esm-coreline{
+    .nav{
+      margin:0;
+      border-bottom: 1px solid #ddd;
+      li{
+        a{
+         padding: 5px;
+        }
+       
+      }
+    }
+    .tab-content{
+      padding: 10px  0 0;
+      border: 0;
     }
   }
   @include max-screen(800px) {
