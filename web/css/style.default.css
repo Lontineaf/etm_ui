@@ -113,6 +113,9 @@ a:focus {
     height:25px;
     vertical-align: middle;	
 }
+.headerwrapper .header-left .logo span{
+    color:#000;	
+}
 
 .headerwrapper .header-left .menu-collapse {
     -moz-transition: all 0.2s ease-out 0s;
