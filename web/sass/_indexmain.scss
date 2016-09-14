@@ -12,12 +12,24 @@
 		border-radius: 50%;
 		background:green;
 		margin-right:20px;
+		position: relative;
+		.score{
+			position: absolute;
+			width:100%;
+			height:100%;
+			left:0;
+			top:0;
+		}
 		span{
 			font-size:14px;
 			margin-left:5px;
 			display: inline-block;
 			vertical-align: middle;
 		}
+	}
+	.score-txt{
+		float: left;
+		margin-top:10px;
 	}
 }
 .bg-reset{

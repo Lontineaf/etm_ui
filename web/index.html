@@ -59,7 +59,27 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
-
+	<script>
+		//模拟检测分数
+		var score = [99,73,55,36];
+		var $score = $('.score');
+		function showSorce(index){
+			$score.html(score[index]+'<span>分</span>');
+			if(index == score.length-1){
+				$('.score-txt').find('h3').html('检测完成');
+				$('.score-txt').find('p').html('检测各项性能指标，指标较差！');
+				return;
+			}
+			$score.animate({'top':'-100px',opacity:0},400,function(){
+				index++;
+				$score.css({'top':0,opacity:1});
+				$score.parent().css('background','#0080'+(100-score[index]));
+				showSorce(index);
+			});
+		}
+		showSorce(0);
+		
+	</script>
 </body>
 
 </html>
