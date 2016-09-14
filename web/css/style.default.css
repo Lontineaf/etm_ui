@@ -3029,12 +3029,16 @@ table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
 /***** 9.7 SIGN IN/UP PAGE *****/
 
 body.signin {
-    background-color: #428bca;
+    background-color: rgba(45,101,203,.89);
+    background-image: radial-gradient(farthest-side ellipse at 10% 0,rgba(119,157,207,.8) 30%,rgba(174,180,186,.8) 76%,rgba(199,175,156,.8));
+    background-image: -webkit-radial-gradient(10% 0,farthest-side ellipse,rgba(119,157,207,.8) 30%,rgba(174,180,186,.8) 76%,rgba(199,175,156,.8));
+    background-image: -moz-radial-gradient(10% 0,farthest-side ellipse,rgba(119,157,207,.8) 30%,rgba(174,180,186,.8) 76%,rgba(199,175,156,.8));
+    background-attachment: fixed,fixed;
 }
 
 .panel-signin,
 .panel-signup {
-    margin: 80px auto 0 auto;
+    margin: 100px auto 0 auto;
 }
 .signin .logo img{
 	display:inline-block;
