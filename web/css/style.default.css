@@ -3500,11 +3500,7 @@ body.signin {
         margin-top: 10px !important;
     }
     
-    .panel-signin {
-        margin: 20px auto;
-    }
-    
-    .panel-signup {
+    .panel-signin,.panel-signup {
         margin: 20px;
         width: auto;
     }
