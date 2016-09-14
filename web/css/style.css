@@ -46,6 +46,20 @@ body .esm-xnpf-detail h1 {
   font-size: 28px;
 }
 
+body .esm-coreline .nav {
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+body .esm-coreline .nav li a {
+  padding: 5px;
+}
+
+body .esm-coreline .tab-content {
+  padding: 10px  0 0;
+  border: 0;
+}
+
 @media screen and (max-width: 800px) {
   body .row-stat .esm-xnpf-detail h1 {
     margin-top: 5px;
