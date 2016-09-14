@@ -1,0 +1,13 @@
+@import url(../css/style.default.css);
+body .esm-xnpf-detail h1 {
+  font-size: 28px; }
+
+@media screen and (max-width: 800px) {
+  body .row-stat .esm-xnpf-detail h1 {
+    margin-top: 5px;
+    font-size: 28px; }
+    body .row-stat .esm-xnpf-detail h1 span:nth-of-type(2) {
+      font-size: 22px; }
+  body .row-stat .esm-xnpf-detail h5.md-title {
+    color: #fff;
+    font-size: 14px; } }

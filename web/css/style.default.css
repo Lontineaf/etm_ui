@@ -3133,16 +3133,16 @@ body.signin {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     float: left;
     margin-right: 15px;
 }
 
 .panel-icon .fa {
     color: #000;
-    font-size: 36px;
-    padding: 12px 0 0 19px;
+    font-size: 22px;
+    padding: 5px 0 0 5px;
 }
 
 .panel-bluegreen .panel-icon .fa {
@@ -3151,6 +3151,7 @@ body.signin {
 
 .panel-violet .panel-icon .fa {
     color: #905dd1;
+        
 }
 
 .panel-blue .panel-icon .fa {
@@ -3158,14 +3159,22 @@ body.signin {
 }
 
 .row-stat .md-title {
-    opacity: 0.6;
-    font-size: 12px;
-    margin-bottom: 5px;
+    font-size: 20px;
+    margin: 8px 0 4px;
 }
-
+.esm-xnpf-detail h5.md-title {
+   color:#fff;
+   font-size: 14px;
+}
 .row-stat h1 {
     margin-bottom: 0;
+    color:#fff;
 }
+.row-stat .blk-infomsg {
+    color:#fff;
+    font-size: 14px
+}
+
 
 .row-stat hr {
     opacity: 0.3;
