@@ -48,28 +48,43 @@
 	    dataZoom: [
 	        {
 	        	type:'slider',
-	        	backgroundColor:'rgba(33,22,77,0.4)',
 	            show: true,
 	            realtime: true,
 	            start: 0,
-	            end: 2
+	            end: 10
 	        },
 	        {
 	            type: 'inside',
 	            realtime: true,
 	            start: 0,
-	            end: 2,
+	            end: 10
 	        }
 	    ],
 	    xAxis : [
 	        {
 	            type : 'time',
 	            boundaryGap : false,
+	            splitLine :{
+	            	show:false
+	            },
+	            axisLabel:{
+	            	formatter:function(value,index){
+	            		var t = new Date(value);
+	            		var result = '';
+	            		result+= t.getFullYear()+'/'+(t.getMonth()+1)+'/'+t.getDay()+'\n';
+	            		result+= (t.getHours()>10? t.getHours():'0'+t.getHours())+":";
+	            		result+= t.getMinutes()>10? t.getMinutes():'0'+t.getMinutes();
+	            		return result;
+	            	}
+	            },
+//	            interval:3*60*60*1000
 	        }
 	    ],
 	    yAxis: [
 	        {
 	            type: 'value',
+	            max:3000,
+	            min:0
 	        }
 	    ],
 	    series: [
@@ -82,6 +97,17 @@
 	                normal: {
 	                    width: 1
 	                }
+	            },
+	            areaStyle:{
+	            	normal:{
+	            		color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        	offset: 0,
+                        	color: 'rgb(255, 158, 68)'
+                    	}, {
+                        	offset: 1,
+                        	color: 'rgb(255, 70, 131)'
+                    	}])
+	            	}
 	            },
 	            data:null
 	        }
