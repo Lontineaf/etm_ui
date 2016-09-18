@@ -119,26 +119,26 @@
          <div class="col-lg-6">
                             <div class="panel panel-default esm-coreline">
                                 <div class="panel-body padding15">
-                                    <h5 class="md-title mt0 mb10">
+                                    <h5 class="md-title mt0 mb10" style="">
+                                        <div class="pull-left">核心链接数</div>
                                         <div class="pull-right">
-                                
-                                            <ul class="nav nav-tabs">
-                                                <li class="active">
-                                                    <a href="#coreline1" data-toggle="tab">核心core1</a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#coreline2" data-toggle="tab">核心core2</a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#coreline3" data-toggle="tab">核心core3</a>
-                                                </li>
-                                            </ul>
+                                          <select id="esm-coreline-select1" data-placeholder="Choose One">
+                                            <option value="line1" data-askData="111">core line1</option>
+                                            <option value="line2" data-askData="2222">core line2</option>
+                                            <option value="line3" data-askData="3333">core line3</option>
+                                            <option value="line4" data-askData="44444">core line4</option>
+                                        </select>
+                                        对比
+                                          <select id="esm-coreline-select2" data-placeholder="Choose One">
+                                            <option value="line1">core line1</option>
+                                            <option value="line2">core line2</option>
+                                            <option value="line3">core line3</option>
+                                            <option value="line4">core line4</option>
+                                        </select>
                                         </div>
-                                        核心链接数</h5>
+                                      </h5>
                                     <div class="tab-content">
-                                        <div class="tab-pane fade active in" id="coreline1">111</div>
-                                       <div class="tab-pane fade" id="coreline2">222</div>
-                                       <div class="tab-pane fade" id="coreline3">333</div>
+                                      <div id="basicflot" class="flotGraph"></div>
                          
                                     </div>
                                 </div>
@@ -156,3 +156,8 @@
     </div>
 </div>
 <!-- contentpanel -->
+
+<script>
+
+		
+</script>
