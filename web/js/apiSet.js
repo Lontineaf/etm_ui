@@ -25,7 +25,7 @@ var EM = function (EM) {
      */
     EM.apiSetConfig = function (env, apiSetKey) {
         var host = window.muiApiConfig || {
-                'test': 'http://180.168.4.202:7173/',
+                'test': 'http://180.168.4.202:7173',
                 'product': ''
             };
         EM.apiConfig = {

@@ -104,11 +104,13 @@
                                     timetype:'latest'
                                 },
                                 success: function(json) {
+                                    console.log(json)
                                     if (json.Status == 0) {
                                        console.log(json)
                                        
                                     }else{
-                                       alert(json.Message);
+                                      // alert(json.Message);
+                                       console.log(json.Message)
                                     }
                                 }
                             });	

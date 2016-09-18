@@ -96,6 +96,7 @@ var EM = function (EM) {
      */
     EM.service = function (options) {
         var actionUrl = EM.apiConfig.apiSet[options.action];
+        console.log(actionUrl)
         options = $.extend({
             showLoading: true
         }, options);
@@ -103,7 +104,8 @@ var EM = function (EM) {
             actionUrl = actionUrl.split(':');
             //alert(actionUrl);
             var ajaxReq = $.ajax({
-                url: options.action == EM.apiConfig.host + actionUrl[1],
+                 url: EM.apiConfig.host + actionUrl[1],
+                //url: options.action == EM.apiConfig.host + actionUrl[1],
                 type: actionUrl[0],
                 data: options.params,
                 dataType: 'jsonp',
@@ -114,7 +116,7 @@ var EM = function (EM) {
                 },
                 success: function (data, status, xhr) {
                     EM.util.hideLoading(options.showLoading == 'page');
-                    alert(data)
+       
                     if (data){
                         if(data.Status == -1000) {
                             //接口异常
