@@ -9,7 +9,8 @@
 	</body>
 	<script src='jquery-1.11.0.js'></script>
 	<script src='echarts.min.js'></script>
-	<script src='ajaxdata.js'></script>
+	<script src='../web/js/util.js'></script>
+	<script src='../web/js/apiSet.js'></script>
 	<script>
 	
 	//图标配置
@@ -102,9 +103,22 @@
 
 		
 	var chart = echarts.init(document.getElementById('chart'));
-	getMainData(chart,function(data){
-		option.series[0].data = data;
-		chart.setOption(option);
+	
+	EM.service({
+		action: 'etmAPITEST',
+        showLoading: false,
+        params: {
+          	c:'mtest',
+            a:'sTableA2',
+            hostid:10737,
+            itemsid:133979,
+            timetype:'latest'
+        },
+        success: function(json) {
+        	console.log(json);
+        	option.series[0].data = json.data;
+        	chart.setOption(option);
+        }
 	})
 	
 	window.onresize = function(){

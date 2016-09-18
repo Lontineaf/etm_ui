@@ -1,3 +1,22 @@
+var ETM = function(ETM){
+	//环境变量
+	var env = 'produce';
+	ETM.apiconfig = {
+		'test':'',
+		'produce':'http://180.168.4.202:7173'
+	}
+	ETM.apis = {
+		'kernelParam':ETM.apiconfig[env]+'/etm/ctrlphp/index.php?c=mtest&a=sTableA2',
+		'getHostId':ETM.apiconfig[env]+'/etm/ctrlphp/index.php?c=mtest&a=sTableA0',
+		'getProList':ETM.apiconfig[env]+'/etm/ctrlphp/index.php?c=mtest&a=sTableA1'
+	}
+	ETM.getApi = function(chart,apikey,opt){
+		
+		
+	}
+	
+	return ETM;
+}(window.ETM || {})
 //ajax请求列表
 var ajaxList = {
 	//核心参数
