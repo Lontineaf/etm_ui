@@ -66,6 +66,7 @@
     <script src="js/index-chart.js"></script>
     <!--<script src="js/pop.js"></script>-->
     <script src="js/util.js"></script>
+    <script src="js/apiSet.js"></script>
 	<script>
 		//模拟检测分数
 		var score = [99,73,55,36];
@@ -92,7 +93,25 @@
       jQuery('#esm-coreline-select2').select2({
               minimumResultsForSearch: -1
      });
-       
+        EM.service({
+                                action: 'etmAPITEST',
+                                showLoading: false,
+                                params: {
+                                  	c:'mtest',
+                                    a:'sTableA2',
+                                    hostid:10737,
+                                    itemsid:133979,
+                                    timetype:'latest'
+                                },
+                                success: function(json) {
+                                    if (json.Status == 0) {
+                                       console.log(json)
+                                       
+                                    }else{
+                                       alert(json.Message);
+                                    }
+                                }
+                            });	
 	</script>
 </body>
 </html>

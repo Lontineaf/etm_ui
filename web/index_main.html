@@ -159,22 +159,5 @@
 
 <script>
 
-	 EM.service({
-                                action: 'etmAPITEST',
-                                showLoading: false,
-                                params: {
-                                  	c:'mtest',
-                                    a:'sTableA2',
-                                    hostid:10737,
-                                    itemsid:133979,
-                                    timetype:'latest'
-                                },
-                                success: function(json) {
-                                    if (json.Status == 0) {
-                                       console.log(json)
-                                    }else{
-                                       alert(json.Message);
-                                    }
-                                }
-                            });	
+
 </script>

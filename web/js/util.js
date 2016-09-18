@@ -107,13 +107,14 @@ var EM = function (EM) {
                 type: actionUrl[0],
                 data: options.params,
                 dataType: 'jsonp',
-                timeout: EM.appData.ajaxTimeout,
+                timeout: 0,
                 beforeSend: function (xhr, settings) {
                     options.showLoading && EM.util.showLoading(options.message || '', options.showLoading == 'page');
                     options.beforeSend && options.beforeSend(xhr, settings);
                 },
                 success: function (data, status, xhr) {
                     EM.util.hideLoading(options.showLoading == 'page');
+                    alert(data)
                     if (data){
                         if(data.Status == -1000) {
                             //接口异常
@@ -159,5 +160,5 @@ var EM = function (EM) {
         }
     };
 
-    
+        return EM;
 }(window.EM || {});
