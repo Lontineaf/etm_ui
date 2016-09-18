@@ -9,22 +9,8 @@
 	</body>
 	<script src='jquery-1.11.0.js'></script>
 	<script src='echarts.min.js'></script>
+	<script src='ajaxdata.js'></script>
 	<script>
-	$.ajax({
-		type:"get",
-		url:"http://180.168.4.202:7173/etm/ctrlphp/index.php",
-		data:{
-			c:'mtest',
-			a:'sTableA2',
-			hostid:10737,
-			itemsid:133979,
-			timetype:'latest'
-		},
-		dataType:'jsonp',
-		success:function(json){
-			renderChart(json);
-		}
-	});
 	
 	//图标配置
 	option = {
@@ -115,11 +101,11 @@
 	};
 
 		
-	function renderChart(data){
-		var chart = echarts.init(document.getElementById('chart'));
+	var chart = echarts.init(document.getElementById('chart'));
+	getMainData(chart,function(data){
 		option.series[0].data = data;
 		chart.setOption(option);
-	}
+	})
 	
 	window.onresize = function(){
 		var chart = echarts.init(document.getElementById('chart'));
