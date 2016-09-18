@@ -1,9 +1,4 @@
-/**
-* @Author: ChenChao
-* @Date:   2016-04-25 09:25:42
-* @Last modified by:   chexingyou
-* @Last modified time: 2016-05-06 09:35:23
-*/
+
 
 /**
  * @namespace EM
@@ -30,16 +25,13 @@ var EM = function (EM) {
      */
     EM.apiSetConfig = function (env, apiSetKey) {
         var host = window.muiApiConfig || {
-                'test': 'http://www.bapi.com',
-                'test1': 'http://10.100.71.73:9401',
-                'chenchao': 'http://10.100.71.76:9999',
+                'test': 'http://180.168.4.202:7173/',
                 'product': ''
             };
         EM.apiConfig = {
             isJsonFile: host.isJsonFile,
             host: host[env] || '',
-            apiSet: EM.apiSet[apiSetKey] || {},
-            yzmUrl: host[env] + '/api/Addin/YZM?randNum='
+            apiSet: EM.apiSet[apiSetKey] || {}
         };
         return EM.apiConfig;
     };
@@ -51,15 +43,15 @@ var EM = function (EM) {
      * @type {object}
      */
     EM.apiSet = {
-        //经纪人api
-        freeAgent: {
-            //register
-            'Initialize': 'GET:/etm/ctrlphp/index.php'
+        //监控api
+        etmAPI: {
+            //etmTest
+            'etmAPITEST': 'GET:/etm/ctrlphp/index.php'
         }
     };
 
     //使用test环境，freeAgent项目的api
-    EM.apiSetConfig(window.muiApiEnv || 'product', 'freeAgent');
+    EM.apiSetConfig(window.muiApiEnv || 'test', 'etmAPI');
 
     return EM;
 

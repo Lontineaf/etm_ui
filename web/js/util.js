@@ -120,12 +120,14 @@ var EM = function (EM) {
                             if(data.OtherInfo && data.OtherInfo.rmstatus){
                                 try{
                                     var json = JSON.parse(data.OtherInfo.rmstatus);
-                                    EM.alert('<div style="text-align: left">ResultStatus:' + json.ResultStatus + '<br>ResultMsg:' + json.ResultMsg + '</div>');
+                                    // EM.alert('<div style="text-align: left">ResultStatus:' + json.ResultStatus + '<br>ResultMsg:' + json.ResultMsg + '</div>');
+                                    consolel.log('<div style="text-align: left">ResultStatus:' + json.ResultStatus + '<br>ResultMsg:' + json.ResultMsg + '</div>')
+                                  
                                 }catch(e){
-                                    EM.alert(data.OtherInfo.rmstatus);
+                                   alert(data.OtherInfo.rmstatus);
                                 }
                             }else{
-                                EM.alert(data.Message);
+                               alert(data.Message);
                             }
                         } else {
                             options.success && options.success(data);
@@ -157,19 +159,5 @@ var EM = function (EM) {
         }
     };
 
-     /**
-     * @memberof EM
-     * @description EM.alert
-     * @param msg {string} 弹出的消息内容
-     * @param callback {function} 点击确定的回调
-     */
-    EM.alert = function(msg, callback){
-        $('body').popup({
-            message: msg,
-            popClass: 'pop-c-one',
-            ok: "确定",
-            onOk: callback || function(){}
-        });
-    };
     
 }(window.EM || {});
