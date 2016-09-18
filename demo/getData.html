@@ -5,23 +5,99 @@
 		<title></title>
 	</head>
 	<body>
+		<div id='chart' style="height: 300px;"></div>
 	</body>
 	<script src='jquery-1.11.0.js'></script>
+	<script src='echarts.min.js'></script>
 	<script>
-		$.ajax({
-			type:"get",
-			url:"http://180.168.4.202:7173/etm/ctrlphp/index.php",
-			data:{
-				c:'mtest',
-				a:'sTableA2',
-				hostid:10737,
-				itemsid:133979,
-				timetype:'latest'
-			},
-			dataType:'jsonp',
-			success:function(json){
-				console.log(json);
-			}
-		});
+	$.ajax({
+		type:"get",
+		url:"http://180.168.4.202:7173/etm/ctrlphp/index.php",
+		data:{
+			c:'mtest',
+			a:'sTableA2',
+			hostid:10737,
+			itemsid:133979,
+			timetype:'latest'
+		},
+		dataType:'jsonp',
+		success:function(json){
+			renderChart(json);
+		}
+	});
+	
+	//图标配置
+	option = {
+	    title : {
+	        text: '核心内参',
+	        subtext: '数据来自东方财富',
+	        x: 'center',
+	        align: 'right'
+	    },
+	    grid: {
+	    	left:'5%',
+	    	right:'5%',
+	        bottom: 80
+	    },
+	    tooltip : {
+	        trigger: 'axis',
+	        axisPointer: {
+	            animation: false
+	        }
+	    },
+	    dataZoom: [
+	        {
+	        	type:'slider',
+	        	backgroundColor:'rgba(33,22,77,0.4)',
+	            show: true,
+	            realtime: true,
+	            start: 0,
+	            end: 2
+	        },
+	        {
+	            type: 'inside',
+	            realtime: true,
+	            start: 0,
+	            end: 2,
+	        }
+	    ],
+	    xAxis : [
+	        {
+	            type : 'time',
+	            boundaryGap : false,
+	        }
+	    ],
+	    yAxis: [
+	        {
+	            type: 'value',
+	        }
+	    ],
+	    series: [
+	        {
+	            name:'测试线',
+	            type:'line',
+	            animation: false,
+	            showSymbol:false,
+	            lineStyle: {
+	                normal: {
+	                    width: 1
+	                }
+	            },
+	            data:null
+	        }
+	    ]
+	};
+
+		
+	function renderChart(data){
+		var chart = echarts.init(document.getElementById('chart'));
+		option.series[0].data = data;
+		chart.setOption(option);
+	}
+	
+	window.onresize = function(){
+		var chart = echarts.init(document.getElementById('chart'));
+		chart.setOption(option);
+	}
 	</script>
 </html>
