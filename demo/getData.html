@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src='jquery-1.11.0.js'></script>
+	<script>
+		$.ajax({
+			type:"get",
+			url:"http://180.168.4.202:7173/etm/ctrlphp/index.php",
+			data:{
+				c:'mtest',
+				a:'sTableA2',
+				hostid:10737,
+				itemsid:133979,
+				timetype:'latest'
+			},
+			dataType:'jsonp',
+			success:function(json){
+				console.log(json);
+			}
+		});
+	</script>
+</html>
