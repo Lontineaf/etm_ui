@@ -93,17 +93,14 @@
             });
         }
         showSorce(0);
-      
+
         jQuery(document).ready(function() {
-              jQuery('#esm-coreline-select2').select2({
-            minimumResultsForSearch: -1
-        });
 
- 
 
-                jQuery('#esm-coreline-select3').select2({
-            minimumResultsForSearch: -1
-        });
+
+            jQuery('#coreline-select-time').select2({
+                minimumResultsForSearch: -1
+            });
             // EM.service({
             //     action: 'etmAPITEST',
             //     showLoading: false,
@@ -126,10 +123,9 @@
             //     }
             // });
 
-    var data = [{ id: 0, text: 'enhancement' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
-	jQuery('#esm-coreline-select1').select2({
-		data: data
-	});
+           
+
+
         });
     </script>
 </body>

@@ -96,12 +96,14 @@ var EM = function (EM) {
      */
     EM.service = function (options) {
         var actionUrl = EM.apiConfig.apiSet[options.action];
+       
         // console.log(actionUrl)
         options = $.extend({
             showLoading: true
         }, options);
         if (actionUrl) {
             actionUrl = actionUrl.split(':');
+             console.log(EM.apiConfig.host +actionUrl[1])
             //alert(actionUrl);
             var ajaxReq = $.ajax({
                  url: EM.apiConfig.host + actionUrl[1],

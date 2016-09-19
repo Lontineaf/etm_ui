@@ -52,7 +52,10 @@ var EM = function (EM) {
             'IdxCorelineData':'GET:/etm/ctrlphp/index.php?c=mtest&a=sTableA2',
 
              //核心链接数 hostID
-            'IdxCorelineHostID':'GET:/etm/ctrlphp/index.php?c=mtest&a=sTableA0'
+            'IdxCorelineHostID':'GET:/etm/ctrlphp/index.php?c=mtest&a=sTableA0',
+
+             //核心监控项目列表
+            'IdxCorelineprojlist':'GET:/etm/ctrlphp/index.php?c=mtest&a=sTableA1',
         }
     };
 
