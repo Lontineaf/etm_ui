@@ -7,8 +7,8 @@ option = {
         align: 'right'
     },
     grid: {
-    	left:'5%',
-    	right:'5%',
+    	left:'10%',
+    	right:'10%',
         bottom: 80
     },
     tooltip : {
@@ -61,7 +61,7 @@ option = {
         {
             name:'测试线',
             type:'line',
-            animation: false,
+            animation: true,
             showSymbol:false,
             lineStyle: {
                 normal: {
