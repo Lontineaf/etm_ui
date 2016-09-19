@@ -35,7 +35,7 @@ var EM = function (EM) {
         };
         return EM.apiConfig;
     };
-
+     
     /**
      * @namespace
      * @memberof EM
@@ -46,7 +46,13 @@ var EM = function (EM) {
         //监控api
         etmAPI: {
             //etmTest
-            'etmAPITEST': 'GET:/etm/ctrlphp/index.php'
+            'etmAPITEST': 'GET:/etm/ctrlphp/index.php',
+
+            //核心 tcpconn/tcpwait连接数 
+            'IdxCorelineData':'GET:/etm/ctrlphp/index.php?c=mtest&a=sTableA2',
+
+             //核心链接数 hostID
+            'IdxCorelineHostID':'GET:/etm/ctrlphp/index.php?c=mtest&a=sTableA0'
         }
     };
 

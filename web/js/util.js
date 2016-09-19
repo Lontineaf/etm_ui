@@ -96,7 +96,7 @@ var EM = function (EM) {
      */
     EM.service = function (options) {
         var actionUrl = EM.apiConfig.apiSet[options.action];
-        console.log(actionUrl)
+        // console.log(actionUrl)
         options = $.extend({
             showLoading: true
         }, options);
