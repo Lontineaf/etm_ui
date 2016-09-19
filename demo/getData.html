@@ -5,125 +5,22 @@
 		<title></title>
 	</head>
 	<body>
+		<div class='select_box'>
+			主机id <select id ='select1'></select>
+			项目列表 <select id ='select2'></select>
+			时区 <select id ='select3'>
+				<option value='latest'>实时</option>
+				<option value='10mins'>10分钟</option>
+				<option value='30mins'>30分钟</option>
+				<option value='60mins'>1小时</option>
+				<option value='180mins'>3小时</option>
+			</select>
+		</div>
 		<div id='chart' style="height: 300px;"></div>
 	</body>
 	<script src='jquery-1.11.0.js'></script>
 	<script src='echarts.min.js'></script>
 	<script src='../web/js/util.js'></script>
 	<script src='../web/js/apiSet.js'></script>
-	<script>
-	
-	//图标配置
-	option = {
-	    title : {
-	        text: '核心内参',
-	        subtext: '数据来自东方财富',
-	        x: 'center',
-	        align: 'right'
-	    },
-	    grid: {
-	    	left:'5%',
-	    	right:'5%',
-	        bottom: 80
-	    },
-	    tooltip : {
-	        trigger: 'axis',
-	        axisPointer: {
-	            animation: false
-	        }
-	    },
-	    dataZoom: [
-	        {
-	        	type:'slider',
-	            show: true,
-	            realtime: true,
-	            start: 0,
-	            end: 10
-	        },
-	        {
-	            type: 'inside',
-	            realtime: true,
-	            start: 0,
-	            end: 10
-	        }
-	    ],
-	    xAxis : [
-	        {
-	            type : 'time',
-	            boundaryGap : false,
-	            splitLine :{
-	            	show:false
-	            },
-	            axisLabel:{
-	            	formatter:function(value,index){
-	            		var t = new Date(value);
-	            		var result = '';
-	            		result+= t.getFullYear()+'/'+(t.getMonth()+1)+'/'+t.getDay()+'\n';
-	            		result+= (t.getHours()>10? t.getHours():'0'+t.getHours())+":";
-	            		result+= t.getMinutes()>10? t.getMinutes():'0'+t.getMinutes();
-	            		return result;
-	            	}
-	            },
-//	            interval:3*60*60*1000
-	        }
-	    ],
-	    yAxis: [
-	        {
-	            type: 'value',
-	            max:3000,
-	            min:0
-	        }
-	    ],
-	    series: [
-	        {
-	            name:'测试线',
-	            type:'line',
-	            animation: false,
-	            showSymbol:false,
-	            lineStyle: {
-	                normal: {
-	                    width: 1
-	                }
-	            },
-	            areaStyle:{
-	            	normal:{
-	            		color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        	offset: 0,
-                        	color: 'rgb(255, 158, 68)'
-                    	}, {
-                        	offset: 1,
-                        	color: 'rgb(255, 70, 131)'
-                    	}])
-	            	}
-	            },
-	            data:null
-	        }
-	    ]
-	};
-
-		
-	var chart = echarts.init(document.getElementById('chart'));
-	
-	EM.service({
-		action: 'etmAPITEST',
-        showLoading: false,
-        params: {
-          	c:'mtest',
-            a:'sTableA2',
-            hostid:10737,
-            itemsid:133979,
-            timetype:'latest'
-        },
-        success: function(json) {
-        	console.log(json);
-        	option.series[0].data = json.data;
-        	chart.setOption(option);
-        }
-	})
-	
-	window.onresize = function(){
-		var chart = echarts.init(document.getElementById('chart'));
-		chart.setOption(option);
-	}
-	</script>
+	<script src='chart.js'></script>
 </html>
