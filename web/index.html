@@ -61,10 +61,8 @@
     <script src="js/custom.js"></script>
     <script src="js/select2.min.js"></script>
 
-    <script src="js/flot/jquery.flot.min.js"></script>
-    <script src="js/flot/jquery.flot.resize.min.js"></script>
+    <script src='js/echarts.min.js'></script>
     <script src="js/index-chart.js"></script>
-    <!--<script src="js/pop.js"></script>-->
     <script src="js/util.js"></script>
     <script src="js/apiSet.js"></script>
     <script>
@@ -94,39 +92,6 @@
         }
         showSorce(0);
 
-        jQuery(document).ready(function() {
-
-
-
-            jQuery('#coreline-select-time').select2({
-                minimumResultsForSearch: -1
-            });
-            // EM.service({
-            //     action: 'etmAPITEST',
-            //     showLoading: false,
-            //     params: {
-            //         c: 'mtest',
-            //         a: 'sTableA2',
-            //         hostid: 10737,
-            //         itemsid: 133979,
-            //         timetype: 'latest'
-            //     },
-            //     success: function(json) {
-            //         console.log(json)
-            //         if (json.Status == 0) {
-            //             console.log(json)
-
-            //         } else {
-            //             // alert(json.Message);
-            //             console.log(json.Message)
-            //         }
-            //     }
-            // });
-
-           
-
-
-        });
     </script>
 </body>
 
