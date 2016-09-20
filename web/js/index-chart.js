@@ -5,8 +5,6 @@ $(function () {
 
     function initialize() {
         loadPage();
-        loadEvents();
-
     }
 
     function loadPage() {
@@ -18,7 +16,7 @@ $(function () {
 		//select2初始化数据
 		function initSelect2Input(data, obj, placeholder) {
 			obj.select2({
-				placeholder: placeholder,
+				//placeholder: placeholder,
 				minimumResultsForSearch: -1,
 				data: data
 			});
@@ -40,36 +38,14 @@ $(function () {
 					// init for first data source
 					initSelect2Input(HostIdData, $hostID, json.data[0].name);
                     $hostID.val(HostIdData[0].id).trigger("change");
+			
 				} else {
 					alert(json.message)
 				}
 			}
 		});
 
-		// 监控项目列表 数据 初始化
-		EM.service({
-			action: 'IdxCorelineprojlist',
-			showLoading: false,
-			params: {
-				hostid: 10708,
-			},
-			success: function (json) {
-				if (json.status == 900) {
-					var res = json.data.map(function (data) {
-                        projData.push({
-							id: data.id,
-							text: data.items_id,
-						});
-					}).join('');
 
-					// init for first data source
-					initSelect2Input(projData, $projlist, json.data[0].items_id);
-
-				} else {
-					alert(json.message)
-				}
-			}
-		});
 
         //hostID 下拉框联动改变 项目列表
 		$hostID.on("change", function (e) {
@@ -85,8 +61,8 @@ $(function () {
                         projData = [];
 						var res2 = json.data.map(function (data) {
 							projData.push({
-								id: data.id,
-								text: data.items_id,
+								id: data.items_id,
+								text: data.key,
 							});
 						}).join('');
 
@@ -96,21 +72,27 @@ $(function () {
 						// init for secound data source
 						initSelect2Input(projData, $projlist);
 						$projlist.val(projData[0].id).trigger("change");
-
+						
 					} else {
 						alert(json.message)
 					}
 				}
 			});
 		});
+		
+		$projlist.on('change', function(){
+			renderChart();
+		})
+		$('#coreline-select-time').on('change', function(){
+			renderChart();
+		})
 
 		jQuery('#coreline-select-time').select2({
 			minimumResultsForSearch: -1
 		});
-    }
 
-    function loadEvents() {
-        //图标配置
+		//
+		//图标配置
 		var option = {
 			title: {
 				text: '核心内参',
@@ -203,36 +185,30 @@ $(function () {
 			var items_id = $('#coreline-select-projlist').select2("val");
 			var time_type = $('#coreline-select-time').val();
 
-			console.log(host_id)
-			console.log(items_id)
-			console.log(time_type)
-
 			EM.service({
 				action: 'IdxCorelineData',
 				showLoading: false,
 				params: {
-					hostid: 10737,
-					itemsid: 133979,
+					hostid: host_id,
+					itemsid: items_id,
 					timetype: time_type
 				},
 				success: function (json) {
 					if (json.status == 900) {
 						option.series[0].data = json.data;
 						chart.setOption(option);
+                        
 					} else {
 						alert(json.message)
 					}
 				}
 			});
 		}
-
-		renderChart();
-
-		window.onresize = function () {
+      
+	  	window.onresize = function () {
 			var chart = echarts.init(document.getElementById('corelineChart'));
 			chart.setOption(option);
 		}
     }
-
 
 });

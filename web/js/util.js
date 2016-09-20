@@ -103,7 +103,6 @@ var EM = function (EM) {
         }, options);
         if (actionUrl) {
             actionUrl = actionUrl.split(':');
-             console.log(EM.apiConfig.host +actionUrl[1])
             //alert(actionUrl);
             var ajaxReq = $.ajax({
                  url: EM.apiConfig.host + actionUrl[1],
