@@ -82,8 +82,6 @@ body {
       -webkit-transform: rotate(360deg)
     }
   }
-
-  
   .esm-xnpf-detail {
     h1 {
       font-size: 28px;
@@ -109,8 +107,42 @@ body {
     .tab-content {
       padding: 10px 0 0;
       border: 0;
-      #corelineChart{
-         height: 330px;
+      #corelineChart {
+        height: 330px;
+      }
+    }
+  }
+  .esm-monitor {
+    .md-title{
+      font-size: 20px;
+    }
+    .esm-monitor-nav {
+      display: block;
+      padding:15px;
+      margin-bottom:20px;
+      border: 1px solid transparent;
+      border-radius:3px;
+      color: #fff;
+      cursor: pointer;
+      &.alert-esmbg-a {
+        background: linear-gradient(to right, #6a5bff, #0096da);
+      }
+      &.alert-esmbg-b {
+        background: linear-gradient(to right, #1ae0ee, #00b2bf);
+      }
+      &.alert-esmbg-c {
+        background: linear-gradient(to right, #0c9, #099);
+      }
+      &.alert-esmbg-d {
+        background: linear-gradient(to right, #f6ab00, #ed9700);
+      }
+      &:hover{
+        filter:alpha(opacity=80); 
+        -moz-opacity:0.8; 
+        opacity:0.8;
+      }
+      h1{
+        margin: 10px 0;
       }
     }
   }
@@ -143,12 +175,14 @@ body {
   ;
   @include ipad {}
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 2dppx)  {
-    .no-media .select2-container .select2-choice .select2-arrow b {
-        background-image: url('../images/droparrows.png') !important;
-        background-repeat: no-repeat !important;
-        background-size: auto auto !important;
-        background-position: 0 15px;
-    		opacity: 0.75;
-    }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 2dppx) {
+  .no-media .select2-container .select2-choice .select2-arrow b {
+    background-image: url('../images/droparrows.png') !important;
+    background-repeat: no-repeat !important;
+    background-size: auto auto !important;
+    background-position: 0 15px;
+    opacity: 0.75;
+  }
 }
