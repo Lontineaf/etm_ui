@@ -204,7 +204,7 @@ $(function () {
 		}
       
 	  	window.onresize = function () {
-			var chart = echarts.init(document.getElementById('corelineChart'));
+			chart = echarts.init(document.getElementById('corelineChart'));
 			chart.setOption(option);
 		}
     }
