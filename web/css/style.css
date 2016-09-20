@@ -1,4 +1,5 @@
 @import url(../css/style.default.css);
+@import url(../css/jquery.dataTables.css);
 .function-score {
   overflow: hidden;
   margin-top: 20px; }
