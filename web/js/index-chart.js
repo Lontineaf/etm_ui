@@ -18,6 +18,7 @@ $(function () {
 			obj.select2({
 				//placeholder: placeholder,
 				minimumResultsForSearch: -1,
+				allowClear: false,
 				data: data
 			});
 		}
