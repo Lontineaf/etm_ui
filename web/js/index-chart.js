@@ -45,8 +45,6 @@ $(function () {
 			}
 		});
 
-
-
         //hostID 下拉框联动改变 项目列表
 		$hostID.on("change", function (e) {
 			var $v = $(this).val();
@@ -91,7 +89,6 @@ $(function () {
 			minimumResultsForSearch: -1
 		});
 
-		//
 		//图标配置
 		var option = {
 			title: {

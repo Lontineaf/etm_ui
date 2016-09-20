@@ -109,6 +109,9 @@ body {
     .tab-content {
       padding: 10px 0 0;
       border: 0;
+      #corelineChart{
+         height: 330px;
+      }
     }
   }
   @include max-screen(800px) {
