@@ -2,9 +2,9 @@ $(function () {
 
     "use strict";
 	initialize();
-
     function initialize() {
         loadPage();
+		esmMonitor();
     }
 
     function loadPage() {
@@ -39,7 +39,7 @@ $(function () {
 					// init for first data source
 					initSelect2Input(HostIdData, $hostID, json.data[0].name);
                     $hostID.val(HostIdData[0].id).trigger("change");
-			
+
 				} else {
 					alert(json.message)
 				}
@@ -71,18 +71,18 @@ $(function () {
 						// init for secound data source
 						initSelect2Input(projData, $projlist);
 						$projlist.val(projData[0].id).trigger("change");
-						
+
 					} else {
 						alert(json.message)
 					}
 				}
 			});
 		});
-		
-		$projlist.on('change', function(){
+
+		$projlist.on('change', function () {
 			renderChart();
 		})
-		$('#coreline-select-time').on('change', function(){
+		$('#coreline-select-time').on('change', function () {
 			renderChart();
 		})
 
@@ -195,18 +195,31 @@ $(function () {
 					if (json.status == 900) {
 						option.series[0].data = json.data;
 						chart.setOption(option);
-                        
+
 					} else {
 						alert(json.message)
 					}
 				}
 			});
 		}
-      
-	  	window.onresize = function () {
+
+		window.onresize = function () {
 			chart = echarts.init(document.getElementById('corelineChart'));
 			chart.setOption(option);
 		}
     }
+
+	function esmMonitor() {
+		$('#esm-monito-lianlu').DataTable({
+			//"processing": true,
+			// "serverSide": true,
+			//"ajax" : "load",
+			//"scrollX": true,
+			"searching": false,
+			// "paging": false,
+			 "ordering": false,
+			 "info": false
+		});
+	}
 
 });
