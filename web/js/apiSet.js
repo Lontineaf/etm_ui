@@ -56,6 +56,15 @@ var EM = function (EM) {
 
              //核心监控项目列表
             'IdxCorelineprojlist':'GET:/etm/ctrlphp/index.php?c=mtest&a=sTableA1',
+            
+            //获取市场列表
+            'getMarketList':'GET:/etm/ctrlphp/index.php?c=monitor&a=mMonitorL01',
+            
+            //获取市场对应产品列表
+            'getProductList':'GET:/etm/ctrlphp/index.php?c=monitor&a=mMonitorL02',
+            
+            //获取产品链路列表
+            'getProductLinkList':'GET:/etm/ctrlphp/index.php?c=monitor&a=mMonitorL03'
         }
     };
 

@@ -3,11 +3,12 @@ $(function () {
     "use strict";
 	initialize();
     function initialize() {
-        loadPage();
-		esmMonitor();
+        loadCornelCharts();
+		loadMonitorLayer();
     }
-
-    function loadPage() {
+	
+	//加载核心参数表格
+    function loadCornelCharts() {
        	var $hostID = $('#coreline-select-hostID'),
 			$projlist = $('#coreline-select-projlist');
 		var HostIdData = [],
@@ -209,8 +210,13 @@ $(function () {
 		}
     }
 
-	function esmMonitor() {
+
+	//加载监控层数据
+	function loadMonitorLayer() {
+		
+		//表格配置项
 		$('#esm-monito-lianlu').DataTable({
+			responsive:true,
 			//"processing": true,
 			// "serverSide": true,
 			//"ajax" : "load",
@@ -218,8 +224,61 @@ $(function () {
 			"searching": false,
 			// "paging": false,
 			 "ordering": false,
+			 "lengthChange":false,
 			 "info": false
 		});
+		
+		//获取市场列表
+		EM.service({
+			action:'getMarketList',
+			showLoading: false,
+			success: function (json) {
+				if (json.status == 900) {
+					renderMarketList(json.data);
+					getProduct(1);
+				} else {
+					alert(json.message)
+				}
+			}
+		});
+		
+		//渲染市场列表dom
+		function renderMarketList(data){
+			var data = data.splice(0,4);
+			var $market = $("#marketList");
+			var classArr = ['a','b','c','d'];
+			var temp = '';
+			data.map(function(d,index){
+				temp+= '<div class="col-lg-3 col-md-3 col-xs-12" data-marketId = '+d.id+'>';
+				temp+= '<a class="alert-esmbg-'+classArr[index]+' esm-monitor-nav">';
+				temp+= '<h1 class="text-center">'+d.name+'</h1>';
+				temp+= '<div class="row">';
+				temp+= '<div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>';
+				temp+= '<div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>';
+				temp+= '<div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div></div></a></div>';
+			})
+			$market.html(temp);
+		}
+		
+		//获取市场对应产品
+		function getProduct(id){
+			EM.service({
+				action:'getProductList',
+				params:{
+					market_id : id
+				},
+				showLoading:false,
+				success:function(json){
+					console.log(json);
+					if (json.status == 900) {
+						
+					} else {
+						alert(json.message)
+					}
+				}
+			})
+		}
+		
 	}
 
 });
