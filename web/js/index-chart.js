@@ -4,9 +4,9 @@ $(function () {
 	initialize();
     function initialize() {
         loadCornelCharts();
-//		loadMonitorLayer();
+		loadMonitorLayer();
     }
-	
+
 	//加载核心参数表格
     function loadCornelCharts() {
        	var $hostID = $('#coreline-select-hostID'),
@@ -178,12 +178,13 @@ $(function () {
 		};
 
 		var chart = echarts.init(document.getElementById('corelineChart'));
-		var timer = null;
+        var timer = null;
 		function renderChart() {
 			clearTimeout(timer);
 			var host_id = $('#coreline-select-hostID').select2("val");
 			var items_id = $('#coreline-select-projlist').select2("val");
 			var time_type = $('#coreline-select-time').val();
+
 			EM.service({
 				action: 'IdxCorelineData',
 				showLoading: false,
@@ -202,8 +203,9 @@ $(function () {
 					}
 				}
 			});
-			if(time_type === 'latest'){
-				timer = setTimeout(renderChart,3000);
+
+			if (time_type === 'latest') {
+				timer = setTimeout(renderChart, 3000);
 				console.log('获取数据');
 			}
 		}
@@ -217,105 +219,131 @@ $(function () {
 
 	//加载监控层数据
 	function loadMonitorLayer() {
-		
-		
-		
-		//获取市场列表
+
+		//初始化：获取市场列表
 		EM.service({
-			action:'getMarketList',
+			action: 'getMarketList',
 			showLoading: false,
 			success: function (json) {
 				if (json.status == 900) {
 					renderMarketList(json.data);
-					getProduct(1);
+					var marketID = 1
+					getProduct(marketID);
 				} else {
 					alert(json.message)
 				}
 			}
 		});
-		
+
 		//渲染市场列表dom
-		function renderMarketList(data){
-			var data = data.splice(0,4);
+		function renderMarketList(data) {
 			var $market = $("#marketList");
-			var classArr = ['a','b','c','d'];
 			var temp = '';
-			data.map(function(d,index){
-				temp+= '<div class="col-lg-3 col-md-3 col-xs-12" data-marketId = '+d.id+'>';
-				temp+= '<a class="alert-esmbg-'+classArr[index]+' esm-monitor-nav">';
-				temp+= '<h1 class="text-center">'+d.name+'</h1>';
-				temp+= '<div class="row">';
-				temp+= '<div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>';
-				temp+= '<div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>';
-				temp+= '<div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div></div></a></div>';
+			data.map(function (data) {
+				temp += ' <li data-marketId = ' + data.id + '> ';
+				temp += ' <a href="javascript:;">' + data.name + ' </a>';
+				temp += ' </li>';
 			})
 			$market.html(temp);
 		}
-		
+
 		//获取市场对应产品
-		function getProduct(id){
+		function getProduct(id) {
 			EM.service({
-				action:'getProductList',
-				params:{
-					market_id : id
+				action: 'getProductList',
+				params: {
+					market_id: id
 				},
-				showLoading:false,
-				success:function(json){
-					console.log(json);
+				showLoading: false,
+				success: function (json) {
 					if (json.status == 900) {
-						//表格配置项
-						var table = $('#esm-monito-lianlu').DataTable({
-							"responsive":true,
-							//"processing": true,
-							// "serverSide": true,
-							//"ajax" : "load",
-							//"scrollX": true,
-							"searching": false,
-							// "paging": false,
-							"ordering": false,
-							"lengthChange":false,
-							"info": false,
-//							"columns": [
-//					            { "data": "name" },
-//					            { "data": "status" },
-//					            { "data": "utime" },
-//					        ],
-							"columnDefs": [ 
-								{
-							    	"targets": 0,
-							    	"data":"[id,name]",
-							    	"render": function ( data, type, val) {
-							    		return '<a href="" data-productId = '+data+'>'+data+'</a>';
-							    	}
-							  	} ,
-//								{
-//							    	"targets": 1,
-//							    	"data": function ( row, type, val, meta ) {
-//							    		return '<a href="">'+val+'</a>';
-//							    	}
-//							  	} ,
-//								{
-//							    	"targets": 2,
-//							    	"data": function ( row, type, val, meta ) {
-//							    		return '<a href="">'+val+'</a>';
-//							    	}
-//							  	} ,
-//								{
-//							    	"targets": 3,
-//							    	"data": function ( row, type, val, meta ) {
-//							    		return '<a href="">'+val+'</a>';
-//							    	}
-//							  	}
-							],
-				         	data:json.data
-						});
+						renderProductList(json.data)
+						var productID = 1;
+						getLlProduct(1);
 					} else {
 						alert(json.message)
 					}
 				}
 			})
 		}
-		
+
+		//渲染产品列表dom
+		function renderProductList(data) {
+			var data = data.splice(0, 4);
+			var $market = $("#ProductList");
+			var classArr = ['a', 'b', 'c', 'd'];
+			var temp = '';
+			data.map(function (d, index) {
+				temp += '<div class="col-lg-2 col-md-2 col-xs-12" data-marketId = ' + d.id + '>';
+				temp += '<a class="alert-esmbg-' + classArr[index] + ' esm-monitor-nav">';
+				temp += '<h4 class="text-center">' + d.name + '</h4>';
+				temp += '<div class="row">';
+				temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>';
+				temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>';
+				temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div></div></a></div>';
+			})
+			$market.html(temp);
+		}
+
+		//获取产品链路列表
+		function getLlProduct(productID) {
+			EM.service({
+				action: 'getProductLinkList',
+				params: {
+					product_id: productID
+				},
+				showLoading: false,
+				success: function (json) {
+					if (json.status == 900) {
+						console.log(json.data)
+						RenderproductLink(json.data)
+					} else {
+						alert(json.message)
+					}
+				}
+			})
+
+		}
+		function RenderproductLink(data) {
+
+			var lianluTable = $('#esm-monito-lianlu').DataTable({
+				responsive: true,
+				"oLanguage": {
+					"oPaginate":
+					{
+						"sFirst": "首页",
+						"sPrevious": "前一页",
+						"sNext": "后一页",
+						"sLast": "末页"
+					}
+				},
+				//"processing": true,
+				// "serverSide": true,
+				"scrollX": true,
+				"searching": false,
+				"ordering": false,
+				"lengthChange": false,
+				"info": false,
+				"data": data,
+				"columns": [
+					// {
+					// 	"class": 'details-control',
+					// 	"orderable": false,
+					// 	"data": null,
+					// 	"defaultContent": ''
+					// },
+					{ "data": "name" },
+					{ "data": "monitorstatus" },
+					{ "data": "utime" },
+					{
+						"data": null,
+						"defaultContent": ''
+					}
+				],
+			});
+		}
+
+
 	}
 
 });

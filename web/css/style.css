@@ -130,6 +130,14 @@ body .esm-coreline .tab-content {
 body .esm-monitor .md-title {
   font-size: 20px; }
 
+body .esm-monitor .marketlist-nav {
+  margin-bottom: 10px;
+  background: none;
+  border-bottom: 1px solid #ddd;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0; }
+
 body .esm-monitor .esm-monitor-nav {
   display: block;
   padding: 15px;
