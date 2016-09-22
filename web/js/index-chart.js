@@ -269,8 +269,6 @@ $(function () {
 			success: function (json) {
 				if (json.status == 900) {
 					renderMarketList(json.data);
-					getProduct(json.data[0].id);
-					bindEvent('market');
 				} else {
 					alert(json.message)
 				}
@@ -281,16 +279,21 @@ $(function () {
 		function renderMarketList(data) {
 			var $market = $("#marketList");
 			var temp = '';
-			data.map(function (data,index) {
-				if(index==0){
-					temp += ' <li data-marketId = ' + data.id + ' class="active"> ';
-				}else{
-					temp += ' <li data-marketId = ' + data.id + '> ';
-				}
-				temp += ' <a href="javascript:;">' + data.name + ' </a>';
-				temp += ' </li>';
-			})
-			$market.html(temp);
+			$market.empty();
+			if(data.length>0){
+				data.map(function (data,index) {
+					if(index==0){
+						temp += ' <li data-marketId = ' + data.id + ' class="active"> ';
+					}else{
+						temp += ' <li data-marketId = ' + data.id + '> ';
+					}
+					temp += ' <a href="javascript:;">' + data.name + ' </a>';
+					temp += ' </li>';
+				})
+				$market.html(temp);
+				getProduct(data[0].id);
+				bindEvent('market');
+			}
 		}
 
 		//获取市场对应产品
@@ -303,12 +306,7 @@ $(function () {
 				showLoading: false,
 				success: function (json) {
 					if (json.status == 900) {
-						if(json.data.length>0){
-							getLinkProduct(json.data[0].id);
-							renderProductList(json.data)
-							
-							bindEvent('product');
-						}
+						renderProductList(json.data)
 					} else {
 						alert(json.message)
 					}
@@ -318,36 +316,37 @@ $(function () {
 
 		//渲染产品列表dom
 		function renderProductList(data) {
-			var data = data.splice(0, 4);
-			var $market = $("#ProductList");
+			var $product = $("#ProductList");
 			var classArr = ['a', 'b', 'c', 'd'];
 			var temp = '';
-			data.map(function (d, index) {
-				temp += '<div class="col-lg-2 col-md-2 col-xs-12" data-productId = ' + d.id + '>';
-				temp += '<a class="alert-esmbg-' + classArr[index] + ' esm-monitor-nav">';
-				temp += '<h4 class="text-center">' + d.name + '</h4>';
-				temp += '<div class="row">';
-				temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>';
-				temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>';
-				temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div></div></a></div>';
-			})
-			$market.html(temp);
+			$product.empty();
+			if(data.length>0){
+				data.map(function (d, index) {
+					temp += '<div class="col-lg-2 col-md-2 col-xs-12" data-productId = ' + d.id + '>';
+					temp += '<a class="alert-esmbg-' + classArr[index%4] + ' esm-monitor-nav">';
+					temp += '<h4 class="text-center">' + d.name + '</h4>';
+					temp += '<div class="row">';
+					temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>';
+					temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>';
+					temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div></div></a></div>';
+				})
+				$product.html(temp);
+				getLinkProduct(data[0].id);
+				bindEvent('product');
+			}
 		}
 
 		//获取产品链路列表
-		function getLinkProduct(productID) {
+		function getLinkProduct(id) {
 			EM.service({
 				action: 'getProductLinkList',
 				params: {
-					product_id: productID
+					product_id: id
 				},
 				showLoading: false,
 				success: function (json) {
-					console.log(json)
 					if (json.status == 900) {
-						if(json.data.length>0){
-							RenderproductLink(json.data)
-						}
+						RenderproductLink(json.data)
 					} else {
 						alert(json.message)
 					}
@@ -356,9 +355,15 @@ $(function () {
 
 		}
 		//渲染链路表格列表dom
+		var linkTable = null;
 		function RenderproductLink(data) {
 			tableOption.data = data;
-			var linkTable = $('#esm-monito-lianlu').DataTable(tableOption);
+			if(linkTable){
+				linkTable=null;
+			}else{
+				$('#esm-monito-lianlu>tbody').remove()
+				linkTable = $('#esm-monito-lianlu').DataTable(tableOption);
+			}
 		}
 		
 		//事件绑定对象
