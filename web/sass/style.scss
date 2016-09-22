@@ -143,10 +143,14 @@ body {
       li {
         &.active {
           &:first-child {
-            border-left: 1px solid #ddd;
+          	a{
+	            border-left: 1px solid #ddd;
+          	}
           }
            &:last-child {
-            border-right: 1px solid #ddd;
+           	a{
+	            border-right: 1px solid #ddd;
+           	}
           }
         }
       }

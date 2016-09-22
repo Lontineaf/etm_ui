@@ -3,44 +3,56 @@
 @import url(../css/dataTables.responsive.css);
 .function-score {
   overflow: hidden;
-  margin-top: 20px; }
-  .function-score .score-circle {
-    float: left;
-    width: 120px;
-    height: 120px;
-    line-height: 120px;
-    text-align: center;
-    font-size: 30px;
-    color: #fff;
-    border-radius: 50%;
-    background: green;
-    margin-right: 20px;
-    position: relative; }
-    .function-score .score-circle .score {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0; }
-    .function-score .score-circle span {
-      font-size: 14px;
-      margin-left: 5px;
-      display: inline-block;
-      vertical-align: middle; }
-  .function-score .score-txt {
-    float: left;
-    margin-top: 10px; }
+  margin-top: 20px;
+}
+
+.function-score .score-circle {
+  float: left;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  font-size: 30px;
+  color: #fff;
+  border-radius: 50%;
+  background: green;
+  margin-right: 20px;
+  position: relative;
+}
+
+.function-score .score-circle .score {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.function-score .score-circle span {
+  font-size: 14px;
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.function-score .score-txt {
+  float: left;
+  margin-top: 10px;
+}
 
 .bg-reset {
-  background: #eee; }
+  background: #eee;
+}
 
 body .clearfix:before,
 body .clearfix:after {
   display: table;
-  content: " "; }
+  content: " ";
+}
 
 body .clearfix:after {
-  clear: both; }
+  clear: both;
+}
 
 body .fullLoading {
   position: fixed;
@@ -50,7 +62,8 @@ body .fullLoading {
   right: 0;
   height: 100%;
   z-index: 10000;
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
 body .fullLoadingBox {
   text-align: center;
@@ -64,7 +77,8 @@ body .fullLoadingBox {
   width: 140px;
   border-radius: 6px;
   font-size: 14px;
-  padding: 58px 0 10px 0; }
+  padding: 58px 0 10px 0;
+}
 
 body .fullLoading-cover {
   position: fixed;
@@ -74,12 +88,17 @@ body .fullLoading-cover {
   right: 0;
   height: 100%;
   z-index: 10000;
-  background-color: #f1f1f1; }
-  body .fullLoading-cover .fullLoadingBox {
-    background-color: transparent;
-    color: #666; }
-    body .fullLoading-cover .fullLoadingBox i {
-      border-color: #666; }
+  background-color: #f1f1f1;
+}
+
+body .fullLoading-cover .fullLoadingBox {
+  background-color: transparent;
+  color: #666;
+}
+
+body .fullLoading-cover .fullLoadingBox i {
+  border-color: #666;
+}
 
 body .fullLoadingBox i {
   position: absolute;
@@ -92,61 +111,85 @@ body .fullLoadingBox i {
   border-radius: 24px;
   -webkit-animation: gif 1s infinite linear;
   animation: gif 1s infinite linear;
-  clip: rect(0 auto 12px 0); }
+  clip: rect(0 auto 12px 0);
+}
 
 @keyframes gif {
   0% {
     -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
+    transform: rotate(0deg);
+  }
   100% {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
+    transform: rotate(360deg);
+  }
+}
 
 @-webkit-keyframes gif {
   0% {
-    -webkit-transform: rotate(0deg); }
+    -webkit-transform: rotate(0deg);
+  }
   100% {
-    -webkit-transform: rotate(360deg); } }
+    -webkit-transform: rotate(360deg);
+  }
+}
 
 body .esm-xnpf-detail h1 {
-  font-size: 28px; }
+  font-size: 28px;
+}
 
 body .esm-coreline h5 {
-  overflow: hidden; }
-  body .esm-coreline h5 .pull-right select {
-    font-size: 16px; }
+  overflow: hidden;
+}
+
+body .esm-coreline h5 .pull-right select {
+  font-size: 16px;
+}
 
 body .esm-coreline .select2-container .select2-choice {
-  padding: 0 0 0 8px; }
-  body .esm-coreline .select2-container .select2-choice .select2-arrow b {
-    background-position-y: 10px; }
+  padding: 0 0 0 8px;
+}
+
+body .esm-coreline .select2-container .select2-choice .select2-arrow b {
+  background-position-y: 10px;
+}
 
 body .esm-coreline .tab-content {
   padding: 10px 0 0;
-  border: 0; }
-  body .esm-coreline .tab-content #corelineChart {
-    height: 330px; }
+  border: 0;
+}
+
+body .esm-coreline .tab-content #corelineChart {
+  height: 330px;
+}
 
 body .esm-monitor .md-title {
-  font-size: 20px; }
+  font-size: 20px;
+}
 
 body .esm-monitor #ProductList > div:nth-child(1) a {
-  background: linear-gradient(to right, #6a5bff, #0096da); }
+  background: linear-gradient(to right, #6a5bff, #0096da);
+}
 
 body .esm-monitor #ProductList > div:nth-child(2) a {
-  background: linear-gradient(to right, #1ae0ee, #00b2bf); }
+  background: linear-gradient(to right, #1ae0ee, #00b2bf);
+}
 
 body .esm-monitor #ProductList > div:nth-child(3) a {
-  background: linear-gradient(to right, #0c9, #099); }
+  background: linear-gradient(to right, #0c9, #099);
+}
 
 body .esm-monitor #ProductList > div:nth-child(4) a {
-  background: linear-gradient(to right, #f6ab00, #ed9700); }
+  background: linear-gradient(to right, #f6ab00, #ed9700);
+}
 
 body .esm-monitor #ProductList > div:nth-child(5) a {
-  background: linear-gradient(to right, #ff9800, #795548); }
+  background: linear-gradient(to right, #ff9800, #795548);
+}
 
 body .esm-monitor #ProductList > div:nth-child(6) a {
-  background: linear-gradient(to right, #f44336, #9c27b0); }
+  background: linear-gradient(to right, #f44336, #9c27b0);
+}
 
 body .esm-monitor .marketlist-nav {
   margin-bottom: 10px;
@@ -154,11 +197,16 @@ body .esm-monitor .marketlist-nav {
   border-bottom: 1px solid #ddd;
   border-top: 0;
   border-left: 0;
-  border-right: 0; }
-  body .esm-monitor .marketlist-nav li.active:first-child {
-    border-left: 1px solid #ddd; }
-  body .esm-monitor .marketlist-nav li.active:last-child {
-    border-right: 1px solid #ddd; }
+  border-right: 0;
+}
+
+body .esm-monitor .marketlist-nav li.active:first-child a {
+  border-left: 1px solid #ddd;
+}
+
+body .esm-monitor .marketlist-nav li.active:last-child a {
+  border-right: 1px solid #ddd;
+}
 
 body .esm-monitor .esm-monitor-nav {
   display: block;
@@ -167,73 +215,96 @@ body .esm-monitor .esm-monitor-nav {
   border: 1px solid transparent;
   border-radius: 3px;
   color: #fff;
-  cursor: pointer; }
-  body .esm-monitor .esm-monitor-nav:hover {
-    filter: alpha(opacity=80);
-    -moz-opacity: 0.8;
-    opacity: 0.8; }
-  body .esm-monitor .esm-monitor-nav h1 {
-    margin: 10px 0; }
+  cursor: pointer;
+}
+
+body .esm-monitor .esm-monitor-nav:hover {
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+}
+
+body .esm-monitor .esm-monitor-nav h1 {
+  margin: 10px 0;
+}
 
 body .esm-monitor .table-scrollable {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   border: 1px solid #dddddd;
-  margin: 10px 0 !important; }
-  body .esm-monitor .table-scrollable > .table {
-    width: 100% !important;
-    margin: 0 !important;
-    margin-bottom: 0;
-    background-color: #fff; }
-    body .esm-monitor .table-scrollable > .table > thead > tr > th,
-    body .esm-monitor .table-scrollable > .table > tbody > tr > th,
-    body .esm-monitor .table-scrollable > .table > tfoot > tr > th,
-    body .esm-monitor .table-scrollable > .table > thead > tr > td,
-    body .esm-monitor .table-scrollable > .table > tbody > tr > td,
-    body .esm-monitor .table-scrollable > .table > tfoot > tr > td {
-      white-space: nowrap; }
-  body .esm-monitor .table-scrollable > .table-bordered {
-    border: 0; }
-    body .esm-monitor .table-scrollable > .table-bordered > thead > tr > th:first-child,
-    body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > th:first-child,
-    body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > th:first-child,
-    body .esm-monitor .table-scrollable > .table-bordered > thead > tr > td:first-child,
-    body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > td:first-child,
-    body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:first-child {
-      border-left: 0; }
-    body .esm-monitor .table-scrollable > .table-bordered > thead > tr > th:last-child,
-    body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > th:last-child,
-    body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > th:last-child,
-    body .esm-monitor .table-scrollable > .table-bordered > thead > tr > td:last-child,
-    body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > td:last-child,
-    body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:last-child {
-      border-right: 0; }
-      body .esm-monitor .table-scrollable > .table-bordered > thead > tr > th:last-child > th,
-      body .esm-monitor .table-scrollable > .table-bordered > thead > tr > th:last-child > td,
-      body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > th:last-child > th,
-      body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > th:last-child > td,
-      body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > th:last-child > th,
-      body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > th:last-child > td,
-      body .esm-monitor .table-scrollable > .table-bordered > thead > tr > td:last-child > th,
-      body .esm-monitor .table-scrollable > .table-bordered > thead > tr > td:last-child > td,
-      body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > td:last-child > th,
-      body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > td:last-child > td,
-      body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:last-child > th,
-      body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:last-child > td {
-        border-bottom: 0; }
+  margin: 10px 0 !important;
+}
+
+body .esm-monitor .table-scrollable > .table {
+  width: 100% !important;
+  margin: 0 !important;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+body .esm-monitor .table-scrollable > .table > thead > tr > th,
+body .esm-monitor .table-scrollable > .table > tbody > tr > th,
+body .esm-monitor .table-scrollable > .table > tfoot > tr > th,
+body .esm-monitor .table-scrollable > .table > thead > tr > td,
+body .esm-monitor .table-scrollable > .table > tbody > tr > td,
+body .esm-monitor .table-scrollable > .table > tfoot > tr > td {
+  white-space: nowrap;
+}
+
+body .esm-monitor .table-scrollable > .table-bordered {
+  border: 0;
+}
+
+body .esm-monitor .table-scrollable > .table-bordered > thead > tr > th:first-child,
+body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > th:first-child,
+body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > th:first-child,
+body .esm-monitor .table-scrollable > .table-bordered > thead > tr > td:first-child,
+body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > td:first-child,
+body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:first-child {
+  border-left: 0;
+}
+
+body .esm-monitor .table-scrollable > .table-bordered > thead > tr > th:last-child,
+body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > th:last-child,
+body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > th:last-child,
+body .esm-monitor .table-scrollable > .table-bordered > thead > tr > td:last-child,
+body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > td:last-child,
+body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:last-child {
+  border-right: 0;
+}
+
+body .esm-monitor .table-scrollable > .table-bordered > thead > tr > th:last-child > th,
+body .esm-monitor .table-scrollable > .table-bordered > thead > tr > th:last-child > td,
+body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > th:last-child > th,
+body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > th:last-child > td,
+body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > th:last-child > th,
+body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > th:last-child > td,
+body .esm-monitor .table-scrollable > .table-bordered > thead > tr > td:last-child > th,
+body .esm-monitor .table-scrollable > .table-bordered > thead > tr > td:last-child > td,
+body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > td:last-child > th,
+body .esm-monitor .table-scrollable > .table-bordered > tbody > tr > td:last-child > td,
+body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:last-child > th,
+body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:last-child > td {
+  border-bottom: 0;
+}
 
 @media screen and (max-width: 800px) {
   body .row-stat .esm-xnpf-detail h1 {
     margin-top: 5px;
-    font-size: 28px; }
-    body .row-stat .esm-xnpf-detail h1 span:nth-of-type(2) {
-      font-size: 22px; }
+    font-size: 28px;
+  }
+  body .row-stat .esm-xnpf-detail h1 span:nth-of-type(2) {
+    font-size: 22px;
+  }
   body .row-stat .esm-xnpf-detail h5.md-title {
     color: #fff;
-    font-size: 14px; }
+    font-size: 14px;
+  }
   body .row-stat .esm-coreline h5 .pull-right select {
-    font-size: 14px; } }
+    font-size: 14px;
+  }
+}
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 2dppx) {
   .no-media .select2-container .select2-choice .select2-arrow b {
@@ -241,4 +312,6 @@ body .esm-monitor .table-scrollable {
     background-repeat: no-repeat !important;
     background-size: auto auto !important;
     background-position: 0 15px;
-    opacity: 0.75; } }
+    opacity: 0.75;
+  }
+}
