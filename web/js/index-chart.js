@@ -304,8 +304,9 @@ $(function () {
 				success: function (json) {
 					if (json.status == 900) {
 						if(json.data.length>0){
-							renderProductList(json.data)
 							getLinkProduct(json.data[0].id);
+							renderProductList(json.data)
+							
 							bindEvent('product');
 						}
 					} else {
