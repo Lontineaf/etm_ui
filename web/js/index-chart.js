@@ -239,7 +239,7 @@ $(function () {
 			"data": null,
 			"columns" :[
 				{"data":"link_name"},
-				{"data":"status"},
+				{"data":"machineroom_id"},
 				{"data":"utime"},
 				{"data":null}
 			],
@@ -355,14 +355,61 @@ $(function () {
 
 		}
 		//渲染链路表格列表dom
+		var isFirst = true;
 		var linkTable = null;
+		
 		function RenderproductLink(data) {
-			tableOption.data = data;
-			if(linkTable){
-				linkTable=null;
-			}else{
-				$('#esm-monito-lianlu>tbody').remove()
+			console.log(data);
+			
+			if(isFirst){
+				tableOption.data = data;
 				linkTable = $('#esm-monito-lianlu').DataTable(tableOption);
+				isFirst = false;
+			}else{
+				linkTable.destroy();
+				$('#esm-monito-lianlu').empty();
+				linkTable = $('#esm-monito-lianlu').DataTable({
+					"responsive": true,
+					"oLanguage": {
+						"oPaginate":
+						{
+							"sFirst": "首页",
+							"sPrevious": "前一页",
+							"sNext": "后一页",
+							"sLast": "末页"
+						}
+					},
+					"scrollX": true,
+					"searching": false,
+					"ordering": false,
+					"lengthChange": false,
+					"info": false,
+					"data": data,
+					"columns" :[
+						{"data":"link_name"},
+						{"data":"machineroom_id"},
+						{"data":"utime"},
+						{"data":null}
+					],
+					"columnDefs":[
+						{
+							"targets" :1,
+							"render":function(data,type,row){
+								if(data == 1){
+									return '<span class="label label-primary">正常</span>';
+								}else{
+									return '<span class="label label-danger">不正常</span>';
+								}
+							}
+						},
+						{
+							"targets":3,
+							"render":function(data,type,row){
+								return "<button class='btn btn-primary'>检测</button>";
+							}
+						}
+					]
+				});
 			}
 		}
 		
