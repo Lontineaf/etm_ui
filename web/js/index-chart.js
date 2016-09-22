@@ -4,7 +4,7 @@ $(function () {
 	initialize();
     function initialize() {
         loadCornelCharts();
-		loadMonitorLayer();
+//		loadMonitorLayer();
     }
 	
 	//加载核心参数表格
@@ -178,12 +178,12 @@ $(function () {
 		};
 
 		var chart = echarts.init(document.getElementById('corelineChart'));
-
+		var timer = null;
 		function renderChart() {
+			clearTimeout(timer);
 			var host_id = $('#coreline-select-hostID').select2("val");
 			var items_id = $('#coreline-select-projlist').select2("val");
 			var time_type = $('#coreline-select-time').val();
-
 			EM.service({
 				action: 'IdxCorelineData',
 				showLoading: false,
@@ -202,6 +202,10 @@ $(function () {
 					}
 				}
 			});
+			if(time_type === 'latest'){
+				timer = setTimeout(renderChart,3000);
+				console.log('获取数据');
+			}
 		}
 
 		window.onresize = function () {
@@ -214,19 +218,7 @@ $(function () {
 	//加载监控层数据
 	function loadMonitorLayer() {
 		
-		//表格配置项
-		$('#esm-monito-lianlu').DataTable({
-			responsive:true,
-			//"processing": true,
-			// "serverSide": true,
-			//"ajax" : "load",
-			//"scrollX": true,
-			"searching": false,
-			// "paging": false,
-			 "ordering": false,
-			 "lengthChange":false,
-			 "info": false
-		});
+		
 		
 		//获取市场列表
 		EM.service({
@@ -271,7 +263,52 @@ $(function () {
 				success:function(json){
 					console.log(json);
 					if (json.status == 900) {
-						
+						//表格配置项
+						var table = $('#esm-monito-lianlu').DataTable({
+							"responsive":true,
+							//"processing": true,
+							// "serverSide": true,
+							//"ajax" : "load",
+							//"scrollX": true,
+							"searching": false,
+							// "paging": false,
+							"ordering": false,
+							"lengthChange":false,
+							"info": false,
+//							"columns": [
+//					            { "data": "name" },
+//					            { "data": "status" },
+//					            { "data": "utime" },
+//					        ],
+							"columnDefs": [ 
+								{
+							    	"targets": 0,
+							    	"data":"[id,name]",
+							    	"render": function ( data, type, val) {
+							    		return '<a href="" data-productId = '+data+'>'+data+'</a>';
+							    	}
+							  	} ,
+//								{
+//							    	"targets": 1,
+//							    	"data": function ( row, type, val, meta ) {
+//							    		return '<a href="">'+val+'</a>';
+//							    	}
+//							  	} ,
+//								{
+//							    	"targets": 2,
+//							    	"data": function ( row, type, val, meta ) {
+//							    		return '<a href="">'+val+'</a>';
+//							    	}
+//							  	} ,
+//								{
+//							    	"targets": 3,
+//							    	"data": function ( row, type, val, meta ) {
+//							    		return '<a href="">'+val+'</a>';
+//							    	}
+//							  	}
+							],
+				         	data:json.data
+						});
 					} else {
 						alert(json.message)
 					}
