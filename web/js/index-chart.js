@@ -206,7 +206,6 @@ $(function () {
 
 			if (time_type === 'latest') {
 				timer = setTimeout(renderChart, 3000);
-				console.log('获取数据');
 			}
 		}
 
@@ -219,7 +218,50 @@ $(function () {
 
 	//加载监控层数据
 	function loadMonitorLayer() {
-
+		
+		//链路层表格配置
+		var tableOption = {
+			"responsive": true,
+			"oLanguage": {
+				"oPaginate":
+				{
+					"sFirst": "首页",
+					"sPrevious": "前一页",
+					"sNext": "后一页",
+					"sLast": "末页"
+				}
+			},
+			"scrollX": true,
+			"searching": false,
+			"ordering": false,
+			"lengthChange": false,
+			"info": false,
+			"data": null,
+			"columns" :[
+				{"data":"link_name"},
+				{"data":"status"},
+				{"data":"utime"},
+				{"data":null}
+			],
+			"columnDefs":[
+				{
+					"targets" :1,
+					"render":function(data,type,row){
+						if(data == 1){
+							return '<span class="label label-primary">正常</span>';
+						}else{
+							return '<span class="label label-danger">不正常</span>';
+						}
+					}
+				},
+				{
+					"targets":3,
+					"render":function(data,type,row){
+						return "<button class='btn btn-primary'>检测</button>";
+					}
+				}
+			]
+		}
 		//初始化：获取市场列表
 		EM.service({
 			action: 'getMarketList',
@@ -227,8 +269,8 @@ $(function () {
 			success: function (json) {
 				if (json.status == 900) {
 					renderMarketList(json.data);
-					var marketID = 1
-					getProduct(marketID);
+					getProduct(json.data[0].id);
+					bindEvent('market');
 				} else {
 					alert(json.message)
 				}
@@ -239,8 +281,12 @@ $(function () {
 		function renderMarketList(data) {
 			var $market = $("#marketList");
 			var temp = '';
-			data.map(function (data) {
-				temp += ' <li data-marketId = ' + data.id + '> ';
+			data.map(function (data,index) {
+				if(index==0){
+					temp += ' <li data-marketId = ' + data.id + ' class="active"> ';
+				}else{
+					temp += ' <li data-marketId = ' + data.id + '> ';
+				}
 				temp += ' <a href="javascript:;">' + data.name + ' </a>';
 				temp += ' </li>';
 			})
@@ -257,9 +303,11 @@ $(function () {
 				showLoading: false,
 				success: function (json) {
 					if (json.status == 900) {
-						renderProductList(json.data)
-						var productID = 1;
-						getLlProduct(1);
+						if(json.data.length>0){
+							renderProductList(json.data)
+							getLinkProduct(json.data[0].id);
+							bindEvent('product');
+						}
 					} else {
 						alert(json.message)
 					}
@@ -274,7 +322,7 @@ $(function () {
 			var classArr = ['a', 'b', 'c', 'd'];
 			var temp = '';
 			data.map(function (d, index) {
-				temp += '<div class="col-lg-2 col-md-2 col-xs-12" data-marketId = ' + d.id + '>';
+				temp += '<div class="col-lg-2 col-md-2 col-xs-12" data-productId = ' + d.id + '>';
 				temp += '<a class="alert-esmbg-' + classArr[index] + ' esm-monitor-nav">';
 				temp += '<h4 class="text-center">' + d.name + '</h4>';
 				temp += '<div class="row">';
@@ -286,7 +334,7 @@ $(function () {
 		}
 
 		//获取产品链路列表
-		function getLlProduct(productID) {
+		function getLinkProduct(productID) {
 			EM.service({
 				action: 'getProductLinkList',
 				params: {
@@ -294,9 +342,11 @@ $(function () {
 				},
 				showLoading: false,
 				success: function (json) {
+					console.log(json)
 					if (json.status == 900) {
-						console.log(json.data)
-						RenderproductLink(json.data)
+						if(json.data.length>0){
+							RenderproductLink(json.data)
+						}
 					} else {
 						alert(json.message)
 					}
@@ -304,46 +354,35 @@ $(function () {
 			})
 
 		}
+		//渲染链路表格列表dom
 		function RenderproductLink(data) {
-
-			var lianluTable = $('#esm-monito-lianlu').DataTable({
-				responsive: true,
-				"oLanguage": {
-					"oPaginate":
-					{
-						"sFirst": "首页",
-						"sPrevious": "前一页",
-						"sNext": "后一页",
-						"sLast": "末页"
-					}
-				},
-				//"processing": true,
-				// "serverSide": true,
-				"scrollX": true,
-				"searching": false,
-				"ordering": false,
-				"lengthChange": false,
-				"info": false,
-				"data": data,
-				"columns": [
-					// {
-					// 	"class": 'details-control',
-					// 	"orderable": false,
-					// 	"data": null,
-					// 	"defaultContent": ''
-					// },
-					{ "data": "name" },
-					{ "data": "monitorstatus" },
-					{ "data": "utime" },
-					{
-						"data": null,
-						"defaultContent": ''
-					}
-				],
-			});
+			tableOption.data = data;
+			var linkTable = $('#esm-monito-lianlu').DataTable(tableOption);
 		}
-
-
+		
+		//事件绑定对象
+		var clickEvents = {
+			'market':function(){
+				var $list = $('#marketList>li');
+				$list.on('click',function(){
+					var $this = $(this);
+					var id = $this.attr('data-marketid');
+					$this.addClass('active').siblings().removeClass('active');
+					getProduct(id);
+				})
+			},
+			'product':function(){
+				var $list = $('#ProductList>div');
+				$list.on('click',function(){
+					var $this = $(this);
+					var id = $this.attr('data-productId');
+					getLinkProduct(id);
+				})
+			}
+		}
+		//绑定tab切换事件
+		function bindEvent(type){
+			return clickEvents[type]();
+		}
 	}
-
 });

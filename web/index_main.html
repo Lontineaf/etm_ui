@@ -136,11 +136,8 @@
                         </div>
                       </h5>
                     <div class="tab-content">
-                        <div id="corelineChart" class="flotGraph">
-
-
-                        </div>
-
+                    	<!--核心内参图表-->
+                        <div id="corelineChart" class="flotGraph"></div>
                     </div>
                 </div>
                 <!-- panel-body -->
@@ -155,56 +152,16 @@
                     <h5 class="md-title mt0 mb10">监控项目</h5>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-xs-12">
-                            <ul class="nav nav-tabs marketlist-nav"  id='marketList'>
-                            </ul>
+                        	<!--市场导航列表-->
+                            <ul class="nav nav-tabs marketlist-nav"  id='marketList'></ul>
                         </div>
                     </div>
-                    <div class="row" id='ProductList'>
-                        <!--<div class="col-lg-3 col-md-3 col-xs-12">
-                            <a class="alert-esmbg-a esm-monitor-nav">
-                                <h1 class="text-center">A股</h1>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div>
-                                </div>
-
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-xs-12">
-                            <a class="esm-monitor-nav alert-esmbg-b">
-                                <h1 class="text-center">港股</h1>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-xs-12">
-                            <a class="esm-monitor-nav alert-esmbg-c">
-                                <h1 class="text-center">美股</h1>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-xs-12">
-                            <a class="esm-monitor-nav alert-esmbg-d">
-                                <h1 class="text-center">其它</h1>
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-chain"></i> 链路总数 </div>
-                                    <div class="col-lg-4 col-md-12 col-xs-12 text-center"> <i class="fa fa-desktop"></i> 主机数 </div>
-                                </div>
-                            </a>
-                        </div>-->
-                    </div>
+                    <!--产品列表-->
+                    <div class="row" id='ProductList'></div>
                     <div class="row">
                         <div class="col-md-12">
                             <h4><i class="fa fa-chain"></i> 链路总数</h4>
+                            <!--链路列表-->
                             <table id="esm-monito-lianlu" cellspacing="0" width="100%" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -212,212 +169,8 @@
                                         <th>状态</th>
                                         <th>时间</th>
                                         <th>操作</th>
-
                                     </tr>
                                 </thead>
-                                <!-- <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr> <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr> <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr> <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr> <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td><span class="badge badge-success">正常</span></td>
-                                        <td><button class="btn btn-primary btn-xs">检测</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>-->
                             </table>
                         </div>
                     </div>
