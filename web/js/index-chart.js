@@ -228,8 +228,9 @@ $(function () {
 					"sFirst": "首页",
 					"sPrevious": "前一页",
 					"sNext": "后一页",
-					"sLast": "末页"
-				}
+					"sLast": "末页",
+				},
+				"sEmptyTable":"暂无数据"
 			},
 			"scrollX": true,
 			"searching": false,
