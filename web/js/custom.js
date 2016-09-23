@@ -140,15 +140,6 @@ jQuery(document).ready(function() {
    
    	//lock page
    	function lockPage(){
-// 		$('body').on('click','#lockpage',function(){
-// 			console.log(1)
-//// 			alert();
-//// 			$lockbox.show();
-//// 			$lockbox.find('.btn-block').click(function(){
-//// 				$lockbox.hide();
-//// 			})
-// 			return false;
-// 		})
 		document.getElementById('lockpage').addEventListener('click',function(){
 			$('#lockbox').fadeIn();
 		},false)
