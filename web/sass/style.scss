@@ -128,7 +128,7 @@ body {
       $bgEndList: #0096da, #00b2bf, #099, #ed9700, #795548,#9c27b0;
       &>div {
         @for $i from 1 through 6 {
-          &:nth-child(#{$i}) {
+          &:nth-child(#{$i}n) {
             a{
               background: linear-gradient(to right, nth($bgStartList, $i), nth($bgEndList, $i));
             }
@@ -163,10 +163,11 @@ body {
       display: block;
       padding: 15px;
       margin-bottom: 20px;
-      border: 1px solid transparent;
+//    border: 5px solid transparent;
       border-radius: 3px;
       color: #fff;
       cursor: pointer;
+      box-sizing: border-box;
       // &.alert-esmbg-a {
       //   background: linear-gradient(to right, #6a5bff, #0096da);
       // }
@@ -179,6 +180,10 @@ body {
       // &.alert-esmbg-d {
       //   background: linear-gradient(to right, #f6ab00, #ed9700);
       // }
+      &.active{
+      	border:5px solid #333;
+      	padding:10px;
+      }
       &:hover {
         filter: alpha(opacity=80);
         -moz-opacity: 0.8;

@@ -125,6 +125,36 @@ jQuery(document).ready(function() {
       } else {
          $('.headerwrapper, .mainwrapper').removeClass('collapsed');
       }
-   }
-
+   	}
+   
+   	//侧边栏对应选中
+   	function leftNavCheck(){
+	    $('body').on('click','.leftpanel .parent a',function(){
+          	var txt_m = $(this).text().trim();
+          	if($(this).text().trim() == txt_m){
+              	$(this).parent().addClass('active')
+          	}
+  		})
+   	}
+	leftNavCheck();
+   
+   	//lock page
+   	function lockPage(){
+// 		$('body').on('click','#lockpage',function(){
+// 			console.log(1)
+//// 			alert();
+//// 			$lockbox.show();
+//// 			$lockbox.find('.btn-block').click(function(){
+//// 				$lockbox.hide();
+//// 			})
+// 			return false;
+// 		})
+		document.getElementById('lockpage').addEventListener('click',function(){
+			$('#lockbox').fadeIn();
+		},false)
+		document.getElementById('unlockbtn').addEventListener('click',function(){
+			$('#lockbox').fadeOut();
+		},false)
+   	}
+	lockPage();
 });

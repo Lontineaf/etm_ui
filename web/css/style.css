@@ -171,27 +171,27 @@ body .esm-monitor .md-title {
   font-size: 20px;
 }
 
-body .esm-monitor #ProductList > div:nth-child(1) a {
+body .esm-monitor #ProductList > div:nth-child(1n) a {
   background: linear-gradient(to right, #6a5bff, #0096da);
 }
 
-body .esm-monitor #ProductList > div:nth-child(2) a {
+body .esm-monitor #ProductList > div:nth-child(2n) a {
   background: linear-gradient(to right, #1ae0ee, #00b2bf);
 }
 
-body .esm-monitor #ProductList > div:nth-child(3) a {
+body .esm-monitor #ProductList > div:nth-child(3n) a {
   background: linear-gradient(to right, #0c9, #099);
 }
 
-body .esm-monitor #ProductList > div:nth-child(4) a {
+body .esm-monitor #ProductList > div:nth-child(4n) a {
   background: linear-gradient(to right, #f6ab00, #ed9700);
 }
 
-body .esm-monitor #ProductList > div:nth-child(5) a {
+body .esm-monitor #ProductList > div:nth-child(5n) a {
   background: linear-gradient(to right, #ff9800, #795548);
 }
 
-body .esm-monitor #ProductList > div:nth-child(6) a {
+body .esm-monitor #ProductList > div:nth-child(6n) a {
   background: linear-gradient(to right, #f44336, #9c27b0);
 }
 
@@ -216,10 +216,15 @@ body .esm-monitor .esm-monitor-nav {
   display: block;
   padding: 15px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
   border-radius: 3px;
   color: #fff;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+body .esm-monitor .esm-monitor-nav.active {
+  border: 5px solid #333;
+  padding: 10px;
 }
 
 body .esm-monitor .esm-monitor-nav:hover {

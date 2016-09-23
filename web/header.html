@@ -1,3 +1,21 @@
+<div class="locked" style="display: none;" id='lockbox'>
+    <div class="lockedpanel">
+        <div class="loginuser">
+            <img src="images/photos/profile.png" class="img-circle img-online" alt="" />
+        </div>
+        <div class="logged">
+            <h4>Elen Adarna</h4>
+            <small class="text-muted">username@domain.com</small>
+        </div>
+        <form id="unlock" method="post" action="index.html">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" class="form-control" placeholder="Enter Password">
+            </div><!-- input-group -->
+            <button class="btn btn-success btn-block" id='unlockbtn' type="button">解锁</button>
+        </form>
+    </div><!-- lockedpanel -->
+</div><!-- locked -->
 <header>
     <div class="headerwrapper">
         <div class="header-left">
@@ -30,16 +48,17 @@
                     <li><a href="#">这是模块三</a></li>
                 </ul>
             </div>
-            <div class="pull-right">
+            <div class="pull-right" >
                 <div class="btn-group btn-group-option">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-caret-down"></i>
-                </button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id='user-opt'>
+                  		<i class="fa fa-caret-down"></i>
+                	</button>
                     <ul class="dropdown-menu pull-right" role="menu">
                         <li><a href="#"><i class="glyphicon glyphicon-user"></i>我的账户</a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-star"></i>活动日志</a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-cog"></i>账户设置</a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-question-sign"></i>帮助</a></li>
+                        <li><a href="javascript:void(0)" id='lockpage'><i class="glyphicon glyphicon-lock"></i>锁定</a></li>
                         <li class="divider"></li>
                         <li><a href="#"><i class="glyphicon glyphicon-log-out"></i>退出</a></li>
                     </ul>

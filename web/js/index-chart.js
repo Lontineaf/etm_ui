@@ -328,13 +328,17 @@ $(function () {
 		//渲染产品列表dom
 		function renderProductList(data) {
 			var $product = $("#ProductList");
-			var classArr = ['a', 'b', 'c', 'd'];
+//			var classArr = ['a', 'b', 'c', 'd'];
 			var temp = '';
 			$product.empty();
 			if(data.length>0){
 				data.map(function (d, index) {
 					temp += '<div class="col-lg-2 col-md-2 col-xs-12" data-productId = ' + d.id + '>';
-					temp += '<a class="alert-esmbg-' + classArr[index%4] + ' esm-monitor-nav">';
+					if(index==0){
+						temp += '<a class="esm-monitor-nav active">';
+					}else{
+						temp += '<a class="esm-monitor-nav">';
+					}
 					temp += '<h4 class="text-center">' + d.name + '</h4>';
 					temp += '<div class="row">';
 					temp += '<div class="col-lg-6 col-md-12 col-xs-12 text-center"> <i class="fa fa-warning"></i> 警告数 </div>';
@@ -372,7 +376,7 @@ $(function () {
 		var linkTable = null;
 		
 		function RenderproductLink(data) {
-			console.log(data);
+//			console.log(data);
 			var opt = clone(tableOption);
 			opt.data = data;
 			if(isFirst){
@@ -402,6 +406,8 @@ $(function () {
 				$list.on('click',function(){
 					var $this = $(this);
 					var id = $this.attr('data-productId');
+					$this.find('a').addClass('active');
+					$this.siblings().find('a').removeClass('active');
 					getLinkProduct(id);
 				})
 			},
