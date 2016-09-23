@@ -296,7 +296,7 @@ $(function () {
 					}else{
 						temp += ' <li data-marketId = ' + data.id + '> ';
 					}
-					temp += ' <a href="javascript:;">' + data.name + ' </a>';
+					temp += ' <a href="javascript:void(0);">' + data.name + ' </a>';
 					temp += ' </li>';
 				})
 				$market.html(temp);
