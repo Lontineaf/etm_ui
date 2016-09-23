@@ -3,6 +3,10 @@
 @import "../css/dataTables.responsive.css";
 @import "function";
 @import "indexmain";
+
+.has-bor-top{
+	border-top:1px solid #ddd!important;
+}
 body {
   .clearfix:before,
   .clearfix:after {

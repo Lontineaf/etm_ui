@@ -44,6 +44,10 @@
   background: #eee;
 }
 
+.has-bor-top {
+  border-top: 1px solid #ddd !important;
+}
+
 body .clearfix:before,
 body .clearfix:after {
   display: table;

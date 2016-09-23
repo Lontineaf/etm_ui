@@ -238,24 +238,33 @@ $(function () {
 			"info": false,
 			"data": [],
 			"columns" :[
-				{"data":"link_name"},
-				{"data":"machineroom_id"},
-				{"data":"utime"},
-				{"data":null}
+				{
+                    "class":          'details-control',
+                    "orderable":      false,
+                    "data":           null,
+                    "defaultContent": ''
+                },
+				{"data":"link_name","title":"链路名称"},
+				{"data":"link_model","title":"链路模块"},
+				{"data":"utime","title":"时间"},
+				{"data":null,"title":"检测"}
 			],
 			"columnDefs":[
 				{
-					"targets" :1,
+					"targets" :2,
 					"render":function(data,type,row){
-						if(data == 1){
-							return '<span class="label label-primary">正常</span>';
-						}else{
-							return '<span class="label label-danger">不正常</span>';
-						}
+						var temp = '';
+						data.map(function(d,index){
+							temp+= '<a href="http://'+d.monitorclient+'">'+d.name+'</a>';
+							if(index<data.length-1){
+								temp+=' —— ';
+							}
+						})
+						return temp;
 					}
 				},
 				{
-					"targets":3,
+					"targets":4,
 					"render":function(data,type,row){
 						return "<button class='btn btn-primary'>检测</button>";
 					}
@@ -363,6 +372,7 @@ $(function () {
 		var linkTable = null;
 		
 		function RenderproductLink(data) {
+			console.log(data);
 			var opt = clone(tableOption);
 			opt.data = data;
 			if(isFirst){
@@ -371,8 +381,9 @@ $(function () {
 			}else{
 				linkTable.destroy();
 				$('#esm-monito-lianlu').empty();
-				linkTable = $('#esm-monito-lianlu').DataTable(opt)
+				linkTable = $('#esm-monito-lianlu').DataTable(opt);
 			}
+			bindEvent('detail');
 		}
 		
 		//事件绑定对象
@@ -393,6 +404,24 @@ $(function () {
 					var id = $this.attr('data-productId');
 					getLinkProduct(id);
 				})
+			},
+			'detail':function(){
+				// Add event listener for opening and closing details
+                $('#esm-monito-lianlu tbody').on('click', 'td.details-control', function () {
+                    var tr = $(this).closest('tr');
+                    var row = linkTable.row( tr );
+             
+                    if ( row.child.isShown() ) {
+                        // This row is already open - close it
+                        row.child.hide();
+                        tr.removeClass('shown');
+                    }
+                    else {
+                        // Open this row
+                        row.child( dataFormat(row.data()) ).show();
+                        tr.addClass('shown');
+                    }
+                });
 			}
 		}
 		//绑定tab切换事件
@@ -412,5 +441,24 @@ $(function () {
 		  	}
 		  	return myNewObj;  
 		}  
+		
+		//表格数据格式化函数
+		function dataFormat (d) {
+            return '<table class="table table-bordered nomargin has-bor-top">'+
+                '<tr>'+
+                    '<td>链路id:</td>'+
+                    '<td>'+d.link_id+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>机房id:</td>'+
+                    '<td>'+d.machineroom_id+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>链路长度:</td>'+
+                    '<td>'+d.link_model.length+'</td>'+
+                '</tr>'+
+            '</table>';
+        }
+		 
 	}
 });
