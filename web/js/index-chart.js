@@ -236,7 +236,7 @@ $(function () {
 			"ordering": false,
 			"lengthChange": false,
 			"info": false,
-			"data": null,
+			"data": [],
 			"columns" :[
 				{"data":"link_name"},
 				{"data":"machineroom_id"},
@@ -293,6 +293,8 @@ $(function () {
 				$market.html(temp);
 				getProduct(data[0].id);
 				bindEvent('market');
+			}else{
+				renderProductList([]);
 			}
 		}
 
@@ -333,6 +335,8 @@ $(function () {
 				$product.html(temp);
 				getLinkProduct(data[0].id);
 				bindEvent('product');
+			}else{
+				RenderproductLink([]);
 			}
 		}
 
@@ -359,57 +363,15 @@ $(function () {
 		var linkTable = null;
 		
 		function RenderproductLink(data) {
-			console.log(data);
-			
+			var opt = clone(tableOption);
+			opt.data = data;
 			if(isFirst){
-				tableOption.data = data;
-				linkTable = $('#esm-monito-lianlu').DataTable(tableOption);
+				linkTable = $('#esm-monito-lianlu').DataTable(opt);
 				isFirst = false;
 			}else{
 				linkTable.destroy();
 				$('#esm-monito-lianlu').empty();
-				linkTable = $('#esm-monito-lianlu').DataTable({
-					"responsive": true,
-					"oLanguage": {
-						"oPaginate":
-						{
-							"sFirst": "首页",
-							"sPrevious": "前一页",
-							"sNext": "后一页",
-							"sLast": "末页"
-						}
-					},
-					"scrollX": true,
-					"searching": false,
-					"ordering": false,
-					"lengthChange": false,
-					"info": false,
-					"data": data,
-					"columns" :[
-						{"data":"link_name"},
-						{"data":"machineroom_id"},
-						{"data":"utime"},
-						{"data":null}
-					],
-					"columnDefs":[
-						{
-							"targets" :1,
-							"render":function(data,type,row){
-								if(data == 1){
-									return '<span class="label label-primary">正常</span>';
-								}else{
-									return '<span class="label label-danger">不正常</span>';
-								}
-							}
-						},
-						{
-							"targets":3,
-							"render":function(data,type,row){
-								return "<button class='btn btn-primary'>检测</button>";
-							}
-						}
-					]
-				});
+				linkTable = $('#esm-monito-lianlu').DataTable(opt)
 			}
 		}
 		
@@ -437,5 +399,18 @@ $(function () {
 		function bindEvent(type){
 			return clickEvents[type]();
 		}
+		
+		//对象clone 方法
+		function clone(myObj){ 
+		  	if(typeof(myObj) != 'object' || (myObj instanceof Array) ) return myObj;  
+		  	if(myObj == null) return myObj;  
+		    
+		  	var myNewObj = new Object();  
+		    
+		  	for(var i in myObj){
+		     	myNewObj[i] = clone(myObj[i]);  
+		  	}
+		  	return myNewObj;  
+		}  
 	}
 });
