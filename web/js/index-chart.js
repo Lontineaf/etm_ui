@@ -94,7 +94,7 @@ $(function () {
 		//图标配置
 		var option = {
 			title: {
-				text: '核心内参',
+				text: '',
 				subtext: '数据来自东方财富',
 				x: 'center',
 				align: 'right'
@@ -181,10 +181,10 @@ $(function () {
         var timer = null;
 		function renderChart() {
 			clearTimeout(timer);
-			var host_id = $('#coreline-select-hostID').select2("val");
-			var items_id = $('#coreline-select-projlist').select2("val");
+			var host_id = $hostID.select2("val");
+			var items_id = $projlist.select2("val");
 			var time_type = $('#coreline-select-time').val();
-
+			
 			EM.service({
 				action: 'IdxCorelineData',
 				showLoading: false,
@@ -196,8 +196,8 @@ $(function () {
 				success: function (json) {
 					if (json.status == 900) {
 						option.series[0].data = json.data;
+						option.title.text = $hostID.select2("data").text+" "+$projlist.select2("data").text;
 						chart.setOption(option);
-
 					} else {
 						alert(json.message)
 					}
