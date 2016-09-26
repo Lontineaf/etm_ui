@@ -115,14 +115,14 @@ $(function () {
 					type: 'slider',
 					show: true,
 					realtime: true,
-					start: 0,
-					end: 10
+					start: 90,
+					end: 100
 				},
 				{
 					type: 'inside',
 					realtime: true,
-					start: 0,
-					end: 10
+					start: 90,
+					end: 100
 				}
 			],
 			xAxis: [
