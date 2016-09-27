@@ -129,12 +129,12 @@ jQuery(document).ready(function() {
    
    	//侧边栏对应选中
    	function leftNavCheck(){
-	    $('.leftpanel .parent a').each(function(){
+	    $('.leftpanel .parent .children a').each(function(){
 	    	var $this = $(this);
 	    	var content = $('.etm-menu-txt').attr('data-txt');
 	    	if($this.html()==content){
 	    		$this.parent().addClass('active');
-	    		$this.parent().parent().parent().addClass("parent-focus");
+	    		$this.parent().parent().prev().trigger('click');
 	    	}
 	    })
    	}
