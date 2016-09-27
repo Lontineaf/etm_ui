@@ -246,9 +246,9 @@ $(function () {
                     "defaultContent": ''
                 },
 				{"data":"link_name","title":"链路名称"},
-				{"data":"link_model","title":"链路模块"},
+				{"class":"link-model","data":"link_model","title":"链路模块"},
 				{"data":"utime","title":"时间"},
-				{"data":null,"title":"检测"}
+				{"class":"check-link","data":null,"title":"检测"}
 			],
 			"columnDefs":[
 				{
@@ -267,7 +267,7 @@ $(function () {
 				{
 					"targets":4,
 					"render":function(data,type,row){
-						return "<button class='btn btn-primary'>检测</button>";
+						return "<button class='btn btn-primary' data-enable=1>检测</button>";
 					}
 				}
 			]
@@ -389,6 +389,7 @@ $(function () {
 				linkTable = $('#esm-monito-lianlu').DataTable(opt);
 			}
 			bindEvent('detail');
+			bindEvent('checkLink');
 		}
 		
 		//事件绑定对象
@@ -429,6 +430,24 @@ $(function () {
                         tr.addClass('shown');
                     }
                 });
+			},
+			'checkLink':function(){
+				$('#esm-monito-lianlu tbody').on('click', 'td.check-link>button', function () {
+					var $this = $(this);
+					if($this.attr('data-enable') == 1){
+						
+	                    var tr = $(this).closest('tr');
+	                    var row = linkTable.row( tr );
+	             		var td = $(this).parent().prev().prev();
+	             		var link_model = row.data().link_model;
+	             		
+	             		td.cindex = 0;
+	             		td.find('a').prop('class','');
+						$this.attr('data-enable',0);
+            			$this.removeClass('btn-primary').addClass('btn-disable').html('检测中');
+	             		dataCheck($this,td,link_model);
+					}
+                });
 			}
 		}
 		//绑定tab切换事件
@@ -466,6 +485,45 @@ $(function () {
                 '</tr>'+
             '</table>';
         }
-		 
+		
+		//检测效果函数
+		function dataCheck(res,target,data){
+			var link = target.find('a').eq(target.cindex).addClass('flash');
+			target.addClass('checking');
+			if(target.cindex>data.length-1){
+				res.removeClass('btn-disable').addClass('btn-primary').html('检测');
+				res.attr('data-enable',1);
+				target.removeClass('checking');
+				return;
+			}
+            //模拟ajax 请求
+            setTimeout(function(){
+            	link.removeClass('flash')
+    			if(Math.random()>0.3){
+            		link.addClass('success');
+            	}else{
+            		link.addClass('error');
+            	}
+            	target.cindex +=1;
+            	dataCheck(res,target,data);
+            },2000)
+		}
+		
+		//自定义动画函数
+		function selfAnimation(ele,time,percent,callback){
+			var t = 0;
+			var pre = percent/(time/10);
+			var p = 0;
+			var timer = setInterval(function(){
+				if(t>=time/10){
+					clearInterval(timer);
+					callback();
+				}else{
+					p+=pre;
+					ele.css('background-size',p+'% 100%');
+					t++;
+				}
+			},10);
+		}
 	}
 });
