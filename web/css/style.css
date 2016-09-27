@@ -344,6 +344,10 @@ body .esm-monitor .table-scrollable > .table-bordered > tfoot > tr > td:last-chi
   background: url(../images/error.png) repeat-y;
 }
 
+.check-link {
+  width: 65px !important;
+}
+
 .link-model a.error {
   color: red !important;
 }
